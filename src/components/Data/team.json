@@ -2,24 +2,45 @@
     "team":
     [
         {
-            "title": "CEO and Founder",
-            "name": "John Smith",
-            "description": "10+ years of experience in digital marketing. Expertise in SEO, PPC, and content strategy",
-            "profile": "/team/c1.png",
+            "title": "Asesor",
+            "name": "MSC Marco Anselmo Ortega Medina",
+            "description": "Jefe de carrera de la ISC , coordinador de tecnología en la UA Tequila",
+            "profile": "/team/team6.JPG",
             "link": "/"
         },
         {
-            "title": "Director of Operations",
-            "name": "Jane Doe",
-            "description": "7+ years of experience in project management and team leadership. Strong organizational and communication skills",
-            "profile": "/team/c2.png",
+            "title": "Integrante",
+            "name": "Andoni Israel Bautista Hernández",
+            "description": "Ingeniero en Sistemas Computacionales",
+            "profile": "/team/team3.JPG",
             "link": "/"
         },
         {
-            "title": "Senior SEO Specialist",
-            "name": "Michael Brown",
-            "description": "5+ years of experience in SEO and content creation. Proficient in keyword research and on-page optimization",
-            "profile": "/team/c3.png",
+            "title": "Integrante",
+            "name": "Guillermo Díaz Ramos",
+            "description": "Ingeniero en Sistemas Computacionales",
+            "profile": "/team/team4.JPG",
+            "link": "/"
+        },
+        {
+            "title": "Integrante",
+            "name": "Jesus Alberto Rodriguez Puertos",
+            "description": "Ingeniero en Sistemas Computacionales",
+            "profile": "/team/team5.JPG",
+            "link": "/"
+        },
+        {
+            "title": "Integrante",
+            "name": "Marco Antonio Romero Andrade",
+            "description": "Ingeniero en Sistemas Computacionales",
+            "profile": "/team/team2.JPG",
+            "link": "/"
+        },
+        {
+            "title": "Integrante",
+            "name": "Alejandra Escarlet Aguilar García",
+            "description": "Ingeniero en Gestión Empresarial",
+            "profile": "/team/team1.JPG",
             "link": "/"
         }
 

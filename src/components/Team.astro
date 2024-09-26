@@ -27,7 +27,7 @@ import Accordion from "./Accordion.astro";
 </div>
 
 <div class="relative flex flex-col items-center md:flex-row pt-6">
-    <Topic title="Nuestro equipo" description="Conoce a algunos de nuestros colaboradores de distintas sedes regionales, ellos te guiarán con gusto a tus destinos favoritos."/>
+    <Topic title="Nuestro equipo" description="Conoce a nuestros colaboradores, un grupo de estudiantes guiados de su asesor. Juntos son los responsables de llevar a cabo este gran proyecto|."/>
 </div>
 
 <div class="flex-row items-center py-5" id="team">
@@ -39,16 +39,16 @@ import Accordion from "./Accordion.astro";
             <div class="self-stretch justify-start items-start inline-flex">
                 <div class="grow shrink basis-0 justify-start items-center gap-8 flex">
                     <div class="h-[102.82px] left-0 top-0 relative">
-                        <img src={profile} alt={name}/>
+                        <img src={profile} class="h-28 w-36 rounded-full" alt={name}/>
                     </div>
                     <div class="flex-col justify-end items-start inline-flex">
                         <div class="text-lg font-normal">{title}</div>
                         <div class="text-xl font-medium">{name}</div>
                     </div>
                 </div>
-                <a class="top-0 right-0" href={link}>
+                {/* <a class="top-0 right-0" href={link}>
                     <img src="/team/lng.svg" alt="vector"/>
-                </a>
+                </a> */}
             </div>
             <hr class="w-full border border-black"/>
             <p class="text-sm md:text-lg">{description}</p>
@@ -58,9 +58,9 @@ import Accordion from "./Accordion.astro";
     }
     </div>
 </div>
-<div class="w-full justify-center md:justify-end items-center inline-flex">
+<!-- <div class="w-full justify-center md:justify-end items-center inline-flex">
     <button class="px-8 py-5 bg-zinc-900 hover:bg-white rounded-2xl text-center text-white hover:text-black border text-xl font-normal leading-7">See all team
     </button>
-</div>
+</div> -->
 
 </Container>
