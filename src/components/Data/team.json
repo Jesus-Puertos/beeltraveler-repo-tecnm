@@ -1,0 +1,68 @@
+{
+    "team":
+    [
+        {
+            "title": "CEO and Founder",
+            "name": "John Smith",
+            "description": "10+ years of experience in digital marketing. Expertise in SEO, PPC, and content strategy",
+            "profile": "/team/c1.png",
+            "link": "/"
+        },
+        {
+            "title": "Director of Operations",
+            "name": "Jane Doe",
+            "description": "7+ years of experience in project management and team leadership. Strong organizational and communication skills",
+            "profile": "/team/c2.png",
+            "link": "/"
+        },
+        {
+            "title": "Senior SEO Specialist",
+            "name": "Michael Brown",
+            "description": "5+ years of experience in SEO and content creation. Proficient in keyword research and on-page optimization",
+            "profile": "/team/c3.png",
+            "link": "/"
+        }
+
+    ],
+    "process":
+    [
+        {
+            "index": 1,
+            "label": "Consultation",
+            "content": "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+        },
+        {
+            "index": 2,
+            "label": "Research",
+            "content": "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+        },
+        {
+            "index": 3,
+            "label": "Implementation",
+            "content": "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+        },
+        {
+            "index": 4,
+            "label": "Optimization",
+            "content": "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+        },
+        {
+            "index": 5,
+            "label": "Reporting",
+            "content": "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+        },
+        {
+            "index": 6,
+            "label": "Improvement",
+            "content": "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+        }
+    ],
+    "testimonios":
+    [
+    { "index": 1, "name": "Miguel Medina", "description": "Tehuacán, Puebla", "testimonio": "¡Increíble experiencia! La agencia me ayudó a planear un viaje a Quiahuiztlan que superó todas mis expectativas. Desde las excursiones de aventura hasta los alojamientos, todo estuvo perfectamente organizado. Definitivamente volveré a usar sus servicios para mis próximas escapadas."},
+    { "index": 2, "name": "María Estrada", "description": "Orizaba, Veracruz", "testimonio": "Utilicé esta agencia para organizar un viaje de negocios a Guadalajara. Me impresionó su atención al detalle y la rapidez con la que hicieron todo. Las reservas de hotel y vuelos fueron perfectas, y el servicio al cliente fue excepcional. Los recomendaré a mis colegas sin dudarlo."},
+    { "index": 3, "name": "Jorge Benitez", "description": "Zongolica, Veracruz", "testimonio": "Nos ayudaron a planificar unas vacaciones familiares en Guadalajara. Aunque al principio estábamos un poco abrumados, el equipo fue muy paciente y nos dio opciones que se adaptaban a nuestros gustos y presupuesto. Solo una pequeña queja sobre un par de retrasos en las respuestas, pero en general, muy satisfechos."},
+    { "index": 4, "name": "Ximena López", "description": "Guadalajara, Jalisco", "testimonio": "Buscaba una escapada rápida para desconectar y esta agencia fue ideal. Encontré un paquete a la playa de Veracruz que incluía todo, desde vuelos hasta actividades. Todo fue muy fácil y la atención al cliente fue muy amigable. ¡Sin duda, volveré a planear otra escapada con ellos!"},
+    { "index": 5, "name": "Renata Márquez", "description": "Chihuahua, Chihuahua", "testimonio": "Tuve una experiencia mixta. La planificación de mi viaje a Yucatán fue buena, pero sentí que algunas recomendaciones de alojamiento no eran tan acertadas. La atención al cliente fue amable, pero podría mejorar en la personalización de las experiencias. Espero que en el futuro consideren más las preferencias individuales."}
+    ]
+}

@@ -1,0 +1,30 @@
+---
+import Container from "./Container.astro"
+import Topic from "./Topic.astro"
+import SwiperSlider from "./SwiperSlider.astro";
+import Stars from "./Stars.astro";
+import teamData from './Data/team.json';
+---
+<Container>
+<div class="relative flex flex-col items-center md:flex-row">
+    <Topic title="Comentarios" description="Siempre es bueno escuchar las críticas y opiniones de nuestros clientes. Tenemos algunos de nuestros ejemplos aquí:" />
+</div>
+
+<div class="rounded-[45px] bg-black mb-[150px] text-white">
+    {
+        teamData.testimonios.map((item)=>{
+            return(
+            <SwiperSlider
+    index = {item.index}
+    name = {item.name}
+    description = {item.description}
+    testimonio = {item.testimonio}
+    />
+            )
+        })
+    }
+    <!-- <Stars /> -->
+
+</div>
+
+</Container>
