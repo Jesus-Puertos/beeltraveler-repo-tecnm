@@ -1,5 +1,15 @@
 ---
+import { MenuItems } from "astro-navbar";
 import Container from "./Container.astro";
+
+const menuitems = [
+ 
+  { href: "/about", label: "Sobre nosotros" },
+  { href: "/#services", label: "Servicios" },
+  
+];
+
+const menuLogin = [{ href: "/login", label: "Iniciar sesión" }];
 ---
 
 <footer class="bg-lime bg-fixed bg-bottom text-black">
@@ -9,6 +19,24 @@ import Container from "./Container.astro";
                 <div class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img class="h-32" src="/Beeltravel-logo.webp" alt="Logo" />
                 </div>
+                 <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
+            <ul
+              class="font-medium flex flex-col p-4 lg:p-0 mt-4 border rounded-lg lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0"
+            >
+              {
+                menuitems.map((item, index) => (
+                  <li>
+                    <a
+                      href={item.href}
+                      class="block hover:underline decoration-[#99DC49] py-2 px-3 text-black rounded lg:bg-transparent lg:p-0"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </MenuItems>
                 <div class="flex mt-4 md:m-0">
                     <div class="-mx-4">
                         @ <span id="currentYear"></span> SIERACOD | Hecho con <a
