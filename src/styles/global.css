@@ -120,3 +120,63 @@
 .bg-lime {
   background-color: #B9FF66;
 }
+
+/* Calendario*/
+
+.calendar {
+  max-width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* siempre 7 columnas */
+  gap: 4px;
+}
+
+.day {
+  width: 100%;               /* que ocupe su columna completa */
+  aspect-ratio: 1 / 1;       /* que sea cuadrado */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.day:hover {
+  background: #cde4ff;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+
+.day.empty {
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+.modal-overlay {
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  overflow: hidden;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  min-width: 300px;
+}
