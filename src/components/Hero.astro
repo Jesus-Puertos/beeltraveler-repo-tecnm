@@ -1,6 +1,10 @@
 ---
 import Container from "./Container.astro";
 import Patners from "./Patners.astro";
+import { supabase } from "@/lib/supabase";
+let session = (await supabase.auth.getSession()).data.session;
+const userId = session?.user?.id ?? "";
+const email = session?.user?.email ?? "";
 ---
 
 <Container>
@@ -13,26 +17,35 @@ import Patners from "./Patners.astro";
         <h1
           class="text-5xl font-medium leading-none md:text-6xl text-center md:text-left"
         >
-          BeelTraveler<br />La ruta comienza en<br />México
+          BeelGo<br />Tu ruta hacia<br />México
         </h1>
         <p
           class="mt-6 mb-8 text-xl font-normal leading-7 sm:mb-12 text-center md:text-left"
         >
-          Una plataforma digital que conecta viajeros con agencias de turismo en
-          México. Promovemos el turismo sostenible y el desarrollo local,
-          garantizando experiencias auténticas.
+          La plataforma digital que une turismo, cultura y comercio local.
+          Descubre experiencias auténticas, conecta con agencias, accede a un
+          marketplace único y encuentra los mejores eventos en un solo lugar.
         </p>
         <div
           class="w-full justify-center md:justify-start items-center inline-flex"
         >
-          <div data-tf-live="01J8R0VG6MXXB6CQ75QSW0T2QE"></div>
+          <div
+            data-tf-live="01J8R0VG6MXXB6CQ75QSW0T2QE"
+            data-tf-hidden={`user_id=${userId},email=${email},source=hero_btn`}
+            data-tf-medium="beelgo"
+          >
+          </div>
         </div>
       </div>
     </div>
     <div class="flex items-center py-5 md:w-6/12 md:pb-20 md:pt-10">
-      <img src="/turismo.jpg" width="100%" alt="Hero" />
+      <img src="/turismo.jpg" width="100%" alt="BeelGo Hero" />
     </div>
   </div>
   <Patners />
 </Container>
+
 <script src="//embed.typeform.com/next/embed.js" is:inline></script>
+
+-
+

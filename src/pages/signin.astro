@@ -1,0 +1,119 @@
+---
+import LayoutAuth from "@/layouts/ProfileLayout.astro";
+import Layout from "../layouts/Layout.astro";
+
+const { cookies, redirect } = Astro;
+
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+if (accessToken && refreshToken) {
+  return redirect("/dashboard");
+}
+---
+
+<LayoutAuth>
+  <main class="w-full flex">
+    <!-- Sección izquierda (idéntica al register) -->
+    <div class="relative flex-1 hidden items-center justify-center h-screen bg-gray-900 lg:flex">
+      <div class="relative z-10 w-full max-w-md">
+        <img src="/Beeltravel-logo.webp" width="150" />
+        <div class="mt-16 space-y-3">
+          <h3 class="text-white text-3xl font-bold leading-snug">
+            Bienvenido a BeelGo empieza a crear y conocer experiencias nuevas.
+          </h3>
+          <p class="text-gray-300">
+            Inicia sesión y empieza a aprender y aportar cultura a México.
+          </p>
+          <div class="flex items-center -space-x-2 overflow-hidden">
+            <img src="https://randomuser.me/api/portraits/women/79.jpg" class="w-10 h-10 rounded-full border-2 border-white" />
+            <img src="https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg" class="w-10 h-10 rounded-full border-2 border-white" />
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=a72ca28288878f8404a795f39642a46f" class="w-10 h-10 rounded-full border-2 border-white" />
+            <img src="https://randomuser.me/api/portraits/men/86.jpg" class="w-10 h-10 rounded-full border-2 border-white" />
+            <img src="https://images.unsplash.com/photo-1510227272981-87123e259b17?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=3759e09a5b9fbe53088b23c615b6312e" class="w-10 h-10 rounded-full border-2 border-white" />
+            <p class="text-sm text-gray-400 font-medium translate-x-5">
+              Únete a más de 5,000 usuarios que ya están preservando la cultura de México.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="absolute inset-0 my-auto h-[500px]"
+        style="
+          background: linear-gradient(
+            152.92deg,
+            rgba(192, 132, 252, 0.2) 4.54%,
+            rgba(232, 121, 249, 0.26) 34.2%,
+            rgba(192, 132, 252, 0.1) 77.55%
+          );
+          filter: blur(118px);
+        "
+      ></div>
+    </div>
+
+    <!-- Sección derecha (clonada de register con cambios de texto) -->
+    <div class="flex-1 flex items-center justify-center h-screen">
+            <div class="mx-auto w-full max-w-md py-10 ">
+        <div class="bg-white p-8 rounded-xl shadow-lg space-y-6 text-gray-600">
+
+      <div class="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
+        <img src="/logo.webp" width="150" class="lg:hidden m-auto" />
+
+        <div class="mt-5 space-y-2">
+          <h3 class="text-gray-800 text-2xl font-bold sm:text-3xl">
+            Iniciar Sesión
+          </h3>
+          <p class="">
+            ¿Aún no tienes una cuenta?
+            <a href="/register" class="font-medium text-green-600 hover:text-green-500">
+              Regístrate ahora
+            </a>
+          </p>
+        </div>
+
+        <!-- Botones sociales en la misma estructura que register -->
+        <div class="w-full">
+          <form action="/api/auth/signin" method="post">
+            <button type="submit" name="provider" value="google"
+              class="flex items-center justify-center py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100 w-full">
+              <img src="https://raw.githubusercontent.com/sidiDev/remote-assets/7cd06bf1d8859c578c2efbfda2c68bd6bedc66d8/google-icon.svg" alt="Google" class="w-5 h-5" />
+            </button>
+          </form>
+          
+         
+        </div>
+
+        <div class="relative">
+          <span class="block w-full h-px bg-gray-300"></span>
+          <p class="inline-block w-fit text-sm bg-white px-2 absolute -top-2 inset-x-0 mx-auto">
+            Ó inicia con correo
+          </p>
+        </div>
+
+        <form action="/api/auth/signin" method="post" class="space-y-5">
+          <div>
+            <label for="email" class="font-medium">Correo</label>
+            <input type="email" name="email" id="email" required
+              class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-green-600 shadow-sm rounded-lg" />
+          </div>
+          <div>
+            <label for="password" class="font-medium">Contraseña</label>
+            <input type="password" name="password" id="password" required
+              class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-green-600 shadow-sm rounded-lg" />
+          </div>
+          <button type="submit"
+            class="w-full px-4 py-2 text-white font-medium bg-green-600 hover:bg-green-500 active:bg-green-600 rounded-lg duration-150">
+            Iniciar sesión
+          </button>
+        </form>
+
+        <span class="text-sm text-gray-400">
+          Al registrarte, aceptas nuestros
+          <a href="#" class="text-blue-500 hover:cursor-pointer hover:underline">términos de uso</a> y
+          <a href="#" class="text-blue-500 hover:cursor-pointer hover:underline">política de privacidad</a>.
+        </span>
+      </div>
+      </div>
+    </div>
+  </main>
+</Layout>
