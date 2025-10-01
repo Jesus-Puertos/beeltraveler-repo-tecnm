@@ -6,9 +6,13 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
   "exclude": [
-    "public"
+    "public",
+    "src/components/Calendar.astro",
+    "src/components/modal.astro"
   ]
 }
