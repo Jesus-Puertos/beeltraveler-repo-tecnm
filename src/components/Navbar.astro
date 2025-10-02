@@ -1,6 +1,7 @@
 ---
 import Container from "@/components/Container.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import Search from "./Icons/Search.astro";
 import User from "./Icons/User.astro";
 
 const menuitems = [
@@ -16,8 +17,6 @@ const menuitems = [
   { href: "/pricing", label: "Paquetes" },
   { href: "/articles", label: "Nuestras agencias" },
 ];
-
-const { user, displayName, avatar } = Astro.props;
 
 const menuLogin = [{ href: "/signin", label: "Iniciar sesión" }];
 ---
@@ -71,30 +70,20 @@ const menuLogin = [{ href: "/signin", label: "Iniciar sesión" }];
                 class="block w-full lg:w-44 py-2 px-4 rounded-l-lg border border-gray-300 focus:ring-2 focus:ring-[#8dc942] focus:outline-none"
               />
 
-             <div
-  class="bg-gray-300 ml-12 p-2 rounded-r-lg flex justify-end items-center"
->
-  {
-    menuLogin.map((item, index) => (
-      <a
-        href={item.href}
-        class="block hover:underline decoration-[#99DC49] py-1 px-1 text-black rounded lg:bg-transparent lg:p-0"
-      >
-        {avatar ? (
-          <img 
-            src={avatar} 
-            alt={displayName ?? "Usuario"} 
-            class="w-8 h-8 rounded-full object-cover border border-gray-300" 
-          />
-        ) : (
-          <User />
-        )}
-        <span class="sr-only">{item.label}</span>
-      </a>
-    ))
-  }
-</div>
-
+              <div
+                class="bg-gray-300 ml-12 p-2 rounded-r-lg flex justify-end items-center"
+              >
+                {
+                  menuLogin.map((item, index) => (
+                    <a
+                      href={item.href}
+                      class="block hover:underline decoration-[#99DC49] py-1 px-1 text-black rounded lg:bg-transparent lg:p-0"
+                    >
+                      <User /> <span class="sr-only">{item.label}</span>
+                    </a>
+                  ))
+                }
+              </div>
             </div>
           </div>
         </Astronav>

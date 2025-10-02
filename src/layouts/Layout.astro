@@ -3,45 +3,6 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
-import { createClient } from "@supabase/supabase-js";
-
-const { cookies } = Astro;
-
-let user = null;
-let displayName = null;
-let avatar = null;
-
-// Recuperar el token de la cookie de este navegador
-const accessToken = cookies.get("sb-access-token");
-
-if (accessToken) {
-  const supabaseServer = createClient(
-    import.meta.env.SUPABASE_URL,
-    import.meta.env.SUPABASE_ANON_KEY,
-    {
-      global: {
-        headers: { Authorization: `Bearer ${accessToken.value}` },
-      },
-    }
-  );
-
-  // 🔑 Obtener usuario logueado
-  const { data: { user: currentUser } } = await supabaseServer.auth.getUser();
-
-  if (currentUser) {
-    user = currentUser;
-
-    // 🔎 Obtener datos del perfil
-    const { data: profileData } = await supabaseServer
-      .from("profiles")
-      .select("nombre, avatar_url")
-      .eq("id", user.id)
-      .single();
-
-    displayName = profileData?.nombre ?? "Usuario";
-    avatar = profileData?.avatar_url ?? "/default-avatar.webp";
-  }
-}
 ---
 
 <!doctype html>
@@ -64,10 +25,12 @@ if (accessToken) {
     />
     <ViewTransitions />
   </head>
-  <body class="bg-gradient-to-br from-green-50 via-white to-emerald-50 font-SpaceGrotesk">
-    <Navbar user={user} displayName={displayName} avatar={avatar} />
+  <body class="bg-white font-SpaceGrotesk">
+    <Navbar />
     <slot />
     <Footer />
-    <script type="text/javascript" src="./dist/main.js"></script>
   </body>
+
+    <script type="text/javascript" src="./dist/main.js"></script>
+
 </html>
