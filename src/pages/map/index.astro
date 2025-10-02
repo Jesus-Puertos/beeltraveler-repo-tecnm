@@ -30,6 +30,7 @@ import InfiniteMenu from "@/components/ui/menus/InfiniteMenu";
 import Container from "@/components/Container.astro";
 import Topic from "@/components/Topic.astro";
 import ScrollStack, { ScrollStackItem } from '@/components/ScrollStackItem.tsx'
+import MapaMemo from "@/components/MapaMemo.astro";
 
 const items = [
   {
@@ -233,14 +234,14 @@ const items = [
    
     <!-- Título responsivo -->
     <Topic
-      title="Que el destino te guie"
-      description="Deja que BeelGo te elija un destino, solo arrastra y dejate llevar"
+      title="Ve los principales sitios cuturales de México"
+      description="BeelGo esta al ..."
       class="text-center text-2xl sm:text-3xl md:text-4xl font-bold uppercase px-4"
     >
       <p class="text-sm sm:text-base md:text-lg px-2">Arrasta y deja que BeelGo te lleve a un lugar al azar</p>
     </Topic>
 
-
+ <MapaMemo />
 
 
 
@@ -258,6 +259,15 @@ const items = [
     <p>This is the third card in the stack</p>
   </ScrollStackItem>
 </ScrollStack> -->
+
+    <!-- Título responsivo -->
+    <Topic
+      title="Que el destino te guie"
+      description="Deja que BeelGo te elija un destino, solo arrastra y dejate llevar"
+      class="text-center text-2xl sm:text-3xl md:text-4xl font-bold uppercase px-4"
+    >
+      <p class="text-sm sm:text-base md:text-lg px-2">Arrasta y deja que BeelGo te lleve a un lugar al azar</p>
+    </Topic>
 
     <!-- Contenedor principal optimizado para móvil -->
     <div class="w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
