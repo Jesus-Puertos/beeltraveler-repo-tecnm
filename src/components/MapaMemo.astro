@@ -1,0 +1,156 @@
+---
+// src/components/MapaMemo.astro
+---
+
+<section
+  id="seccion_mapa"
+  class="w-full bg-gradient-to-b from-white to-gray-100 py-12 px-4 lg:px-16 xl:scroll-px-96"
+>
+  <div
+    class="max-w-[90rem] mx-auto bg-white rounded-2xl shadow-lg p-6 md:p-10 grid grid-cols-1 lg:grid-cols-3 gap-10"
+  >
+    <!-- Columna izquierda -->
+    <div class="lg:col-span-1 flex flex-col justify-start">
+      <!-- Selector -->
+      <div>
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">¿Dónde estás?</h3>
+        <label class="block text-black text-sm mb-2">Elige una ubicación</label>
+        <select
+          id="selector_estado"
+          class="w-full border border-gray-300 text-black rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
+        >
+          <option disabled selected>Selecciona un estado</option>
+          <option value="Veracruz">Veracruz</option>
+          <option value="Jalisco">Jalisco</option>
+          <option value="Ciudad de México">Ciudad de México</option>
+          <option value="Nuevo León">Nuevo León</option>
+          <option value="Puebla">Puebla</option>
+        </select>
+      </div>
+
+      <!-- Simbología -->
+      <div
+        class="bg-gray-50 rounded-lg p-4 shadow-inner border text-sm text-gray-800 mt-6"
+      >
+        <h4 class="font-semibold mb-2">
+          🗺️ Simbología del Índice de Preservación Cultural
+        </h4>
+        <ul class="space-y-2">
+          <li class="flex items-center">
+            <span class="inline-block w-4 h-4 mr-2 rounded-full" style="background-color: #8b5cf6;"></span>
+            Zonas en riesgo de pérdida (Índice bajo: 0–199)
+          </li>
+          <li class="flex items-center">
+            <span class="inline-block w-4 h-4 mr-2 rounded-full" style="background-color: #fbbf24;"></span>
+            Preservación moderada (Índice medio: 200–349)
+          </li>
+          <li class="flex items-center">
+            <span class="inline-block w-4 h-4 mr-2 rounded-full" style="background-color: #fde047;"></span>
+            Alta preservación (Índice alto: 350–500)
+          </li>
+          <li class="flex items-center">
+            <span class="inline-block w-4 h-4 mr-2 rounded-full border border-gray-400 bg-gray-200"></span>
+            Sin datos disponibles
+          </li>
+        </ul>
+        <p class="text-xs mt-3 text-gray-500">
+          *Datos verificados por INAH y TecNM.
+        </p>
+      </div>
+    </div>
+
+    <!-- Columna derecha: Mapa panorámico -->
+    <div
+      id="mapa_mexico"
+      class="lg:col-span-2 rounded-lg overflow-hidden border text-black shadow-md w-full aspect-[16/9] min-h-[500px]"
+    >
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Cargar Google Charts -->
+<script is:inline src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- Script con tooltips -->
+<script client:load>
+  google.charts.load("current", {
+    packages: ["geochart"],
+    mapsApiKey: "TU_API_KEY_REAL",
+  });
+
+  google.charts.setOnLoadCallback(drawRegionsMap);
+
+  function tooltip(estado, valor, riesgo) {
+    const colores = {
+      alto: "🟣",
+      moderado: "🟠",
+      bajo: "🟡",
+    };
+
+    const leyendas = {
+      alto: "✨ Zona en riesgo de pérdida cultural",
+      moderado: "🌅 Preservación moderada",
+      bajo: "🏛️ Alta preservación cultural",
+    };
+
+    return `
+      <div style="padding:10px; max-width:260px; font-family:Arial, sans-serif;">
+        <div style="font-weight:bold; font-size:16px; margin-bottom:6px;">${estado}</div>
+        <div><span style="font-size:18px;">${colores[riesgo]}</span> <b>Índice:</b> ${valor}</div>
+        <div style="margin:6px 0; color:#444;">${leyendas[riesgo]}</div>
+        <div style="margin-top:6px; display:flex; gap:12px; align-items:center;">
+          <img src="public/img/states/logo_INAH-removebg-preview.png" alt="INAH" width="36" height="36">
+          <img src="/TST_logo-removebg-preview.png" alt="TecNM" width="36" height="36">
+          <img src="public/img/states/TST_logo-removebg-preview.png" alt="Turismo" width="36" height="36">
+        </div>
+        <div style="font-size:12px; margin-top:6px; color:#666;">
+          Datos verificados por INAH y TecNM
+        </div>
+      </div>
+    `;
+  }
+
+  function drawRegionsMap() {
+    const mapaDiv = document.getElementById("mapa_mexico");
+    if (!mapaDiv) return;
+
+    const data = google.visualization.arrayToDataTable([
+      [
+        "Estado",
+        "Índice",
+        { role: "tooltip", type: "string", p: { html: true } },
+      ],
+      ["Sonora", 150, tooltip("Sonora", 150, "alto")],
+      ["Veracruz", 120, tooltip("Veracruz", 120, "alto")],
+      ["Puebla", 380, tooltip("Puebla", 380, "bajo")],
+      ["Jalisco", 250, tooltip("Jalisco", 250, "moderado")],
+      ["Nuevo León", 300, tooltip("Nuevo León", 300, "moderado")],
+      ["Oaxaca", 450, tooltip("Oaxaca", 450, "bajo")],
+      ["Yucatán", 400, tooltip("Yucatán", 400, "bajo")],
+    ]);
+
+    const options = {
+      region: "MX",
+      displayMode: "regions",
+      resolution: "provinces",
+      tooltip: { isHtml: true },
+      colorAxis: {
+        colors: [
+          "#8b5cf6", // 🟣 riesgo de pérdida
+          "#fbbf24", // 🟠 moderado
+          "#fde047"  // 🟡 alta preservación
+        ],
+      },
+      backgroundColor: "#eef2ff",
+      datalessRegionColor: "#e5e7eb",
+      defaultColor: "#9ca3af",
+    };
+
+    const chart = new google.visualization.GeoChart(mapaDiv);
+    chart.draw(data, options);
+
+    window.addEventListener("resize", () => chart.draw(data, options));
+  }
+</script>
