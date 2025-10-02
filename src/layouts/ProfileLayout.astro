@@ -1,15 +1,77 @@
 ---
+import "../styles/global.css";
+
+import "@fontsource-variable/geist";
+
+import { createClient } from "@supabase/supabase-js";
+
+
+const { cookies } = Astro;
+
+let user = null;
+let displayName = null;
+let avatar = null;
+
+// Recuperar el token de la cookie de este navegador
+const accessToken = cookies.get("sb-access-token");
+
+if (accessToken) {
+  const supabaseServer = createClient(
+    import.meta.env.SUPABASE_URL,
+    import.meta.env.SUPABASE_ANON_KEY,
+    {
+      global: {
+        headers: { Authorization: `Bearer ${accessToken.value}` },
+      },
+    }
+  );
+
+  // 🔑 Obtener usuario logueado
+  const { data: { user: currentUser } } = await supabaseServer.auth.getUser();
+
+  if (currentUser) {
+    user = currentUser;
+
+    // 🔎 Obtener datos del perfil
+    const { data: profileData } = await supabaseServer
+      .from("profiles")
+      .select("nombre, avatar_url")
+      .eq("id", user.id)
+      .single();
+
+    displayName = profileData?.nombre ?? "Usuario";
+    avatar = profileData?.avatar_url ?? "/default-avatar.webp";
+  }
+}
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>BeelPedia</title>
+   
   </head>
-  <body class="bg-lime">
-    <slot />
+  <body class="bg-white">
+      <div
+        class=" m-auto dark:bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]"
+      >
+     
+      <slot />
+       </div>
+      <!-- <Footer /> -->
   </body>
+  <script is:inline src="/node_modules/preline/dist/preline.js"></script>
+
+  <style is:global>
+    :root {
+      color-scheme: light dark;
+    }
+
+    body {
+      font-family: "Geist Variable", sans-serif;
+    }
+  </style>
 </html>
