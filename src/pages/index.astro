@@ -7,6 +7,8 @@ import Testimonial from "../components/Testimonial.astro";
 import Contact from "../components/Contact.astro";
 import Case from "../components/Case.astro";
 import Bento from "@/components/Bento.astro";
+import CardSwap, { Card } from '@/components/CardSwap'
+
 ---
 
 <!-- POSITIVUS Official Astro theme -->
@@ -14,6 +16,31 @@ import Bento from "@/components/Bento.astro";
   <main class="space-y-20">
     <Hero />
     <Bento />
+    <div style={{ height: '600px', position: 'relative' }}>
+  <CardSwap
+    client:load
+    cardDistance={60}
+    verticalDistance={70}
+    delay={5000}
+    pauseOnHover={false}
+  >
+    <Card     client:load
+>
+      <h3>Card 1</h3>
+      <p>Your content here</p>
+    </Card>
+    <Card     client:load
+>
+      <h3>Card 2</h3>
+      <p>Your content here</p>
+    </Card>
+    <Card     client:load
+>
+      <h3>Card 3</h3>
+      <p>Your content here</p>
+    </Card>
+  </CardSwap>
+</div>
     <Services />
     <Case />
     <Team />

@@ -1,0 +1,506 @@
+---
+// src/pages/index.astro
+import Layout from "@/layouts/Layout.astro";
+import { supabase } from "@/lib/supabase";
+
+let user = null;
+let profile = null;
+let displayName = null;
+let avatar = null;
+
+const {
+  data: { session },
+} = await supabase.auth.getSession();
+
+if (session) {
+  user = session.user;
+
+  const { data: profileData } = await supabase
+    .from("profiles")
+    .select("nombre, avatar_url")
+    .eq("id", user.id)
+    .single();
+
+  profile = profileData;
+  displayName = profile?.nombre ?? "Usuario";
+  avatar = profile?.avatar_url ?? "/default-avatar.webp";
+}
+
+import InfiniteMenu from "@/components/ui/menus/InfiniteMenu";
+import Container from "@/components/Container.astro";
+import Topic from "@/components/Topic.astro";
+import ScrollStack, { ScrollStackItem } from '@/components/ScrollStackItem.tsx'
+
+const items = [
+  {
+    image: "/img/states/aguascalientes.jpg",
+    link: "https://es.wikipedia.org/wiki/Aguascalientes",
+    title: "Aguascalientes",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/baja-california.jpg",
+    link: "https://es.wikipedia.org/wiki/Baja_California",
+    title: "Baja California",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/bajacalifornia-sur.jpg",
+    link: "https://es.wikipedia.org/wiki/Baja_California_Sur",
+    title: "Baja California Sur",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/campeche.jpg",
+    link: "https://es.wikipedia.org/wiki/Campeche",
+    title: "Campeche",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/coahuila.jpg",
+    link: "https://es.wikipedia.org/wiki/Coahuila",
+    title: "Coahuila",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/colima.jpg",
+    link: "https://es.wikipedia.org/wiki/Colima",
+    title: "Colima",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/chiapas.jpg",
+    link: "https://es.wikipedia.org/wiki/Chiapas",
+    title: "Chiapas",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/Chihuahua.jpg",
+    link: "https://es.wikipedia.org/wiki/Chihuahua",
+    title: "Chihuahua",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/estado-de-mexico.jpg",
+    link: "https://es.wikipedia.org/wiki/Ciudad_de_M%C3%A9xico",
+    title: "Ciudad de México",
+    description: "Capital del país",
+  },
+  {
+    image: "/img/states/durango.jpg",
+    link: "https://es.wikipedia.org/wiki/Durango",
+    title: "Durango",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/guanajuato.jpg",
+    link: "https://es.wikipedia.org/wiki/Guanajuato",
+    title: "Guanajuato",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/guerrero.jpg",
+    link: "https://es.wikipedia.org/wiki/Guerrero",
+    title: "Guerrero",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/hidalgo.jpg",
+    link: "https://es.wikipedia.org/wiki/Hidalgo",
+    title: "Hidalgo",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/jalisco.jpg",
+    link: "https://es.wikipedia.org/wiki/Jalisco",
+    title: "Jalisco",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/estado-de-mexico.jpg",
+    link: "https://es.wikipedia.org/wiki/M%C3%A9xico_(estado)",
+    title: "Estado de México",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/michoacan.jpg",
+    link: "https://es.wikipedia.org/wiki/Michoac%C3%A1n",
+    title: "Michoacán",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/morelos.jpg",
+    link: "https://es.wikipedia.org/wiki/Morelos",
+    title: "Morelos",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/nayarit.jpg",
+    link: "https://es.wikipedia.org/wiki/Nayarit",
+    title: "Nayarit",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/nuevo-leon.jpg",
+    link: "https://es.wikipedia.org/wiki/Nuevo_Le%C3%B3n",
+    title: "Nuevo León",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/oaxaca.jpg",
+    link: "https://es.wikipedia.org/wiki/Oaxaca",
+    title: "Oaxaca",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/puebla.jpg",
+    link: "https://es.wikipedia.org/wiki/Puebla",
+    title: "Puebla",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/queretaro.jpg",
+    link: "https://es.wikipedia.org/wiki/Quer%C3%A9taro",
+    title: "Querétaro",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/quintana-roo.jpg",
+    link: "https://es.wikipedia.org/wiki/Quintana_Roo",
+    title: "Quintana Roo",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/san-luis-potosi.jpg",
+    link: "https://es.wikipedia.org/wiki/San_Luis_Potos%C3%AD",
+    title: "San Luis Potosí",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/sinaloa.jpg",
+    link: "https://es.wikipedia.org/wiki/Sinaloa",
+    title: "Sinaloa",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/sonora.jpg",
+    link: "https://es.wikipedia.org/wiki/Sonora",
+    title: "Sonora",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/tabasco.jpg",
+    link: "https://es.wikipedia.org/wiki/Tabasco",
+    title: "Tabasco",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/tamaulipas.jpg",
+    link: "https://es.wikipedia.org/wiki/Tamaulipas",
+    title: "Tamaulipas",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/tlaxcala.jpg",
+    link: "https://es.wikipedia.org/wiki/Tlaxcala",
+    title: "Tlaxcala",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/veracruz.jpg",
+    link: "https://es.wikipedia.org/wiki/Veracruz",
+    title: "Veracruz",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/yucatan.jpg",
+    link: "https://es.wikipedia.org/wiki/Yucat%C3%A1n",
+    title: "Yucatán",
+    description: "Estado de México",
+  },
+  {
+    image: "/img/states/zacatecas.jpg",
+    link: "https://es.wikipedia.org/wiki/Zacatecas",
+    title: "Zacatecas",
+    description: "Estado de México",
+  },
+];
+---
+
+<Layout user={user} avatar={avatar} displayName={displayName}>
+  
+  <Container>
+   
+    <!-- Título responsivo -->
+    <Topic
+      title="Que el destino te guie"
+      description="Deja que BeelGo te elija un destino, solo arrastra y dejate llevar"
+      class="text-center text-2xl sm:text-3xl md:text-4xl font-bold uppercase px-4"
+    >
+      <p class="text-sm sm:text-base md:text-lg px-2">Arrasta y deja que BeelGo te lleve a un lugar al azar</p>
+    </Topic>
+
+
+
+
+
+  <!-- <ScrollStack client:load>
+  <ScrollStackItem >
+    <h2>Card 1</h2>
+    <p>This is the first card in the stack</p>
+  </ScrollStackItem>
+  <ScrollStackItem >
+    <h2>Card 2</h2>
+    <p>This is the second card in the stack</p>
+  </ScrollStackItem>
+  <ScrollStackItem >
+    <h2>Card 3</h2>
+    <p>This is the third card in the stack</p>
+  </ScrollStackItem>
+</ScrollStack> -->
+
+    <!-- Contenedor principal optimizado para móvil -->
+    <div class="w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
+      <div
+        class="mb-8 sm:mb-16 md:mb-24 relative"
+        style={{ 
+          height: "70vh", 
+          minHeight: "400px",
+          maxHeight: "800px",
+          position: "relative",
+          width: "100%"
+        }}
+      >
+      
+
+        <!-- Menú infinito con mejor altura responsiva -->
+        <div class="w-full h-full infinite-menu-container">
+          <InfiniteMenu client:load items={items} />
+        </div>
+              <p>Buscas algo mas personalizado explora el catalogo completo de estados y municipios <a href="/">Click aquí</a></p>
+
+      </div>
+    </div>
+
+
+
+
+    <!-- Script mejorado para la funcionalidad de búsqueda -->
+    <script is:inline define:vars={{ items }}>
+      document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        let searchTimeout = null;
+
+        // Función para normalizar texto (remover acentos y convertir a minúsculas)
+        function normalizeText(text) {
+          return text
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+        }
+
+        // Función para buscar el índice del estado
+        function findStateIndex(searchTerm) {
+          const normalizedSearch = normalizeText(searchTerm);
+          
+          return items.findIndex(item => {
+            const normalizedTitle = normalizeText(item.title);
+            return normalizedTitle.includes(normalizedSearch);
+          });
+        }
+
+        // Función para navegar al estado usando eventos personalizados
+        function navigateToState(index) {
+          if (index >= 0) {
+            // Disparar evento personalizado que el componente InfiniteMenu puede escuchar
+            const navigateEvent = new CustomEvent('navigateToItem', {
+              detail: { index: index }
+            });
+            document.dispatchEvent(navigateEvent);
+          }
+        }
+
+        // Función para manejar la búsqueda
+        function handleSearch() {
+          const searchTerm = searchInput.value.trim();
+          
+          if (searchTerm.length > 0) {
+            const stateIndex = findStateIndex(searchTerm);
+            if (stateIndex >= 0) {
+              // Debounce la navegación para evitar demasiadas animaciones
+              clearTimeout(searchTimeout);
+              searchTimeout = setTimeout(() => {
+                navigateToState(stateIndex);
+                
+                // Feedback visual mejorado
+                searchInput.style.borderColor = '#10b981';
+                searchInput.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.1)';
+                setTimeout(() => {
+                  searchInput.style.borderColor = '#3b82f6';
+                  searchInput.style.boxShadow = '0 0 0 2px rgba(59, 130, 246, 0.1)';
+                }, 500);
+              }, 300);
+            } else {
+              // Feedback visual para no encontrado
+              searchInput.style.borderColor = '#ef4444';
+              searchInput.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
+              setTimeout(() => {
+                searchInput.style.borderColor = '#d1d5db';
+                searchInput.style.boxShadow = 'none';
+              }, 1000);
+            }
+          } else {
+            // Restablecer estilo cuando está vacío
+            searchInput.style.borderColor = '#d1d5db';
+            searchInput.style.boxShadow = 'none';
+          }
+        }
+
+        // Event listener para el input de búsqueda
+        searchInput.addEventListener('input', handleSearch);
+        
+        // También permitir navegación con Enter
+        searchInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            handleSearch();
+          }
+        });
+
+        // Mejorar la experiencia táctil en móviles
+        if ('ontouchstart' in window) {
+          searchInput.addEventListener('touchstart', function() {
+            searchInput.focus();
+          });
+        }
+
+        // Ajustar el tamaño del canvas en móviles
+        function adjustCanvasForMobile() {
+          const canvas = document.querySelector('#infiniteMenuComponent canvas');
+          const container = document.querySelector('.infinite-menu-container');
+          
+          if (canvas && container) {
+            // Configuraciones táctiles para móvil
+            if (window.innerWidth < 768) {
+              canvas.style.touchAction = 'manipulation';
+              canvas.style.userSelect = 'none';
+              canvas.style.webkitUserSelect = 'none';
+              
+              // Forzar redimensionamiento en móvil
+              const containerRect = container.getBoundingClientRect();
+              canvas.style.width = containerRect.width + 'px';
+              canvas.style.height = containerRect.height + 'px';
+              
+              // Disparar evento de redimensionamiento para que el componente se ajuste
+              window.dispatchEvent(new Event('resize'));
+            }
+            
+            // Mejorar la calidad visual en dispositivos de alta densidad
+            const dpr = window.devicePixelRatio || 1;
+            if (dpr > 1) {
+              const rect = canvas.getBoundingClientRect();
+              canvas.width = rect.width * dpr;
+              canvas.height = rect.height * dpr;
+              canvas.style.width = rect.width + 'px';
+              canvas.style.height = rect.height + 'px';
+              
+              const gl = canvas.getContext('webgl2');
+              if (gl) {
+                gl.viewport(0, 0, canvas.width, canvas.height);
+              }
+            }
+          }
+        }
+
+        // Función para redimensionar cuando el dispositivo cambie de orientación
+        function handleOrientationChange() {
+          setTimeout(() => {
+            adjustCanvasForMobile();
+            // Forzar un redimensionamiento adicional después del cambio de orientación
+            setTimeout(adjustCanvasForMobile, 500);
+          }, 100);
+        }
+
+        // Event listeners mejorados
+        setTimeout(adjustCanvasForMobile, 1000);
+        setTimeout(adjustCanvasForMobile, 2000); // Segundo intento por si el primero falla
+        
+        window.addEventListener('resize', adjustCanvasForMobile);
+        window.addEventListener('orientationchange', handleOrientationChange);
+        
+        // Para dispositivos móviles, asegurarse de que se redimensione correctamente
+        if ('ontouchstart' in window) {
+          document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+              setTimeout(adjustCanvasForMobile, 300);
+            }
+          });
+        }
+      });
+    </script>
+
+    <!-- Estilos CSS adicionales para mejorar la experiencia móvil -->
+    <style>
+      /* Optimizaciones para móvil */
+      @media (max-width: 768px) {
+        /* Asegurar que el canvas ocupe todo el espacio disponible */
+        #infiniteMenuComponent canvas {
+          width: 100% !important;
+          height: 100% !important;
+          min-height: 400px;
+          touch-action: manipulation;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        /* Mejorar la visibilidad del buscador */
+        #searchInput {
+          font-size: 16px !important; /* Evita zoom en iOS */
+        }
+
+        /* Asegurar que los elementos de UI se muestren correctamente */
+        #infiniteMenuComponent > div {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      /* Optimizaciones para tablets */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        #infiniteMenuComponent canvas {
+          width: 100%;
+          height: 100%;
+          min-height: 500px;
+        }
+      }
+
+      /* Optimizaciones generales */
+      #infiniteMenuComponent {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+      }
+
+      /* Mejorar la accesibilidad del buscador */
+      #searchInput:focus {
+        transform: translateX(-50%) scale(1.02);
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* Asegurar que el contenedor principal tenga la altura correcta */
+      .infinite-menu-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+    </style>
+  </Container>
+</Layout>
