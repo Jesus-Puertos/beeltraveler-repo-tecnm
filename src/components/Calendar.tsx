@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Modal from "./Modal";
-import eventsData from "./data/events.json";
+import eventsData from "./Data/events.json";
 
 type Event = { title: string; description: string };
 type EventsMap = Record<string, Event[]>;
