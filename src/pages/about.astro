@@ -4,9 +4,10 @@ import Layout from "../layouts/Layout.astro";
 import Team from "../components/Team.astro";
 ---
 
-<Layout title="Bienvenido a mi sitio">
+<Layout title="Bienvenido a BeelGo">
   <main class="space-y-20">
     <Container>
+      <!-- HERO -->
       <div
         class="relative flex flex-col-reverse items-center md:flex-row"
         id="hero"
@@ -14,13 +15,14 @@ import Team from "../components/Team.astro";
         <div class="row items-center py-5 md:pb-20 md:pt-10">
           <div class="text-center space-y-10">
             <h1 class="text-5xl font-medium leading-none md:text-6xl">
-              Es hora de viajar
-            </h1><br /><h2>Con BeeTraveler</h2>
+              Es momento de preservar y viajar
+            </h1><br /><h2>Con BeelGo</h2>
             <p class="mt-6 mb-8 text-xl font-normal leading-7 sm:mb-12">
-              BeeTraveler es una plataforma innovadora diseñada para facilitar
-              la planificación y organización de viajes, ofreciendo herramientas
-              intuitivas para que los viajeros puedan explorar, reservar y
-              disfrutar de experiencias únicas.
+              BeelGo es una plataforma innovadora dedicada a la preservación y
+              difusión de la herencia cultural de México. Integra herramientas
+              digitales que permiten a los usuarios explorar mapas interactivos,
+              conocer eventos culturales, apoyar a artesanos locales y descubrir
+              experiencias auténticas que fortalecen la identidad cultural.
             </p><br />
             <a href="https://485z3n3rwf9.typeform.com/to/Gd6X7ze8">
               <button
@@ -32,7 +34,7 @@ import Team from "../components/Team.astro";
                 <span
                   class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-lime-400 px-8 py-1 text-sm font-medium text-black backdrop-blur-3xl"
                 >
-                  ¡Comienza el viaje!
+                  ¡Descubre la cultura!
                 </span>
               </button>
             </a>
@@ -40,87 +42,79 @@ import Team from "../components/Team.astro";
         </div>
       </div>
 
+      <!-- MISIÓN / VISIÓN / VALORES -->
       <div
         class="w-full p-12 bg-zinc-900 rounded-[45px] justify-start items-start gap-16 inline-flex text-white"
       >
         <div
           class="grid grid-cols-1 md:grid-cols-3 gap-2 divide-x-0 md:divide-x divide-y md:divide-y-0"
         >
+          <!-- Misión -->
           <div
             class="flex-col items-start gap-5 inline-flex px-2 md:px-6 py-6 md:py-2"
           >
             <h1>Misión</h1>
             <div class="w-full text-lg font-normal">
-              BeeTraveler se compromete a transformar la experiencia de viaje al
-              proporcionar una plataforma integral que facilite la
-              planificación, exploración y reserva de viajes personalizados. A
-              través de herramientas innovadoras y un enfoque centrado en el
-              usuario, nuestra misión es empoderar a los viajeros para que
-              descubran y vivan aventuras únicas, fomentando conexiones
-              auténticas con los destinos y sus culturas.
-            </div>
-            <div class="justify-start items-center gap-[15px] inline-flex">
-              <div class="text-lime text-xl font-normal leading-7"></div>
+              BeelGo busca rescatar, preservar y promover la herencia cultural
+              de México mediante el uso de la tecnología. Nuestra misión es
+              ofrecer un espacio digital donde se integren viajes, productos
+              artesanales y eventos culturales, generando oportunidades para
+              comunidades locales y experiencias significativas para los
+              usuarios.
             </div>
           </div>
+
+          <!-- Visión -->
           <div
             class="flex-col items-start gap-5 inline-flex px-2 md:px-6 py-6 md:py-2"
           >
             <h1>Visión</h1>
             <div class="w-full text-lg font-normal">
-              Aspiramos a ser la plataforma líder en el sector de viajes,
-              reconocida globalmente por nuestra capacidad para innovar y
-              mejorar continuamente la experiencia del viajero. Nuestra visión
-              es crear un ecosistema donde cada viaje sea accesible, sostenible
-              y memorable, permitiendo que personas de todo el mundo exploren el
-              planeta de manera responsable y enriquecedora.
-            </div>
-            <div class="justify-start items-center gap-[15px] inline-flex">
-              <div class="text-lime text-xl font-normal leading-7"></div>
+              Ser la plataforma líder en preservación cultural y turismo
+              responsable, reconocida por conectar a viajeros con artesanos,
+              guías y organizaciones que representan la riqueza cultural de
+              México. Aspiramos a construir un puente entre tradición e
+              innovación, asegurando que la cultura se conserve y se comparta
+              con nuevas generaciones.
             </div>
           </div>
+
+          <!-- Valores -->
           <div
             class="flex-col items-start gap-5 inline-flex px-2 md:px-6 py-6 md:py-2"
           >
             <div class="w-full text-lg font-normal">
-              <h1>Valores de BeeTraveler</h1>
+              <h1>Valores de BeelGo</h1>
               <ul>
                 <li>
-                  <strong>Innovación:</strong> Fomentamos la creatividad y la mejora
-                  continua.
+                  <strong>Preservación:</strong> Rescatar y proteger la riqueza
+                  cultural de México.
                 </li>
                 <li>
-                  <strong>Orientación al Cliente:</strong> Nos comprometemos a ofrecer
-                  un servicio excepcional.
+                  <strong>Innovación:</strong> Usar tecnología para difundir y
+                  acercar la cultura.
                 </li>
                 <li>
-                  <strong>Sostenibilidad:</strong> Promovemos prácticas responsables
-                  en el turismo.
+                  <strong>Sostenibilidad:</strong> Promover turismo responsable
+                  y comercio justo.
                 </li>
                 <li>
-                  <strong>Autenticidad:</strong> Valoramos las experiencias genuinas
-                  y únicas.
+                  <strong>Autenticidad:</strong> Valorar lo genuino y lo propio
+                  de cada región.
                 </li>
                 <li>
-                  <strong>Colaboración:</strong> Creemos en el trabajo en equipo
-                  y relaciones sólidas.
+                  <strong>Colaboración:</strong> Fortalecer lazos entre
+                  viajeros, artesanos y comunidades.
                 </li>
                 <li>
-                  <strong>Accesibilidad:</strong> Hacemos que los viajes sean accesibles
-                  para todos.
+                  <strong>Accesibilidad:</strong> Hacer que la cultura esté al
+                  alcance de todos.
                 </li>
                 <li>
-                  <strong>Responsabilidad:</strong> Asumimos el impacto en la sociedad
-                  y el medio ambiente.
-                </li>
-                <li>
-                  <strong>Diversidad e Inclusión:</strong> Celebramos la diversidad
-                  y promovemos la inclusión.
+                  <strong>Inclusión:</strong> Celebrar la diversidad cultural y
+                  social.
                 </li>
               </ul>
-            </div>
-            <div class="justify-start items-center gap-[15px] inline-flex">
-              <div class="text-lime text-xl font-normal leading-7"></div>
             </div>
           </div>
         </div>

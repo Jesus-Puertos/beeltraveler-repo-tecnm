@@ -14,7 +14,7 @@ import Accordion from "./Accordion.astro";
   </div>
 
   <div class="my-6">
-    <div class="space-y-10">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
       {
         teamData.process.map((item) => {
           return (
@@ -71,7 +71,7 @@ import Accordion from "./Accordion.astro";
   <div class="w-full justify-center md:justify-end items-center inline-flex">
     <button
       class="px-8 py-5 bg-zinc-900 hover:bg-white rounded-2xl text-center text-white hover:text-black border text-xl font-normal leading-7"
-      >See all team
+      >Ver más información
     </button>
   </div>
 </Container>
