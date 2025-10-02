@@ -2,44 +2,44 @@
     "team": [
         {
             "title": "Asesor",
-            "name": "MSC Marco Anselmo Ortega Medina",
+            "name": "I.S.C Ricardo Garcia Castro",
             "description": "Jefe de carrera de la ISC , coordinador de tecnología en la UA Tequila",
-            "profile": "/team/team6.jpg",
-            "link": "/"
-        },
-        {
-            "title": "Integrante",
-            "name": "Andoni Israel Bautista Hernández",
-            "description": "Ingeniero en Sistemas Computacionales",
-            "profile": "/team/team3.jpg",
-            "link": "/"
-        },
-        {
-            "title": "Integrante",
-            "name": "Guillermo Díaz Ramos",
-            "description": "Ingeniero en Sistemas Computacionales",
-            "profile": "/team/team4.jpg",
+            "profile": "/team/ricardo.jfif",
             "link": "/"
         },
         {
             "title": "Integrante",
             "name": "Jesus Alberto Rodriguez Puertos",
             "description": "Ingeniero en Sistemas Computacionales",
-            "profile": "/team/team5.jpg",
+            "profile": "/team/jesus.jfif",
+            "link": "/"
+        },
+        {
+            "title": "Integrante",
+            "name": "Guillermo Díaz Ramos",
+            "description": "Ingeniero en Sistemas Computacionales",
+            "profile": "/team/memo.jfif",
+            "link": "/"
+        },
+        {
+            "title": "Integrante",
+            "name": "Jesus Alberto Rodriguez Puertos",
+            "description": "Ingeniero en Sistemas Computacionales",
+            "profile": "/team/saul.jfif",
             "link": "/"
         },
         {
             "title": "Integrante",
             "name": "Marco Antonio Romero Andrade",
             "description": "Ingeniero en Sistemas Computacionales",
-            "profile": "/team/team2.jpg",
+            "profile": "/team/david.jfif",
             "link": "/"
         },
         {
             "title": "Integrante",
             "name": "Alejandra Escarlet Aguilar García",
             "description": "Ingeniero en Gestión Empresarial",
-            "profile": "/team/team1.jpg",
+            "profile": "/team/rubi.jfif",
             "link": "/"
         }
     ],
