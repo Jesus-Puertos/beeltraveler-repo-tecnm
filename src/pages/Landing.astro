@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EventForm from "../components/EventForm.tsx";
+import { useState } from "react";
+---
+
+<Layout title="Landing - BeeTraveler">
+  <main class="max-w-3xl mx-auto px-4 py-16 space-y-12">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-center text-emerald-600">
+      🚀 Panel de Organizadores
+    </h1>
+    <p class="text-center text-lg text-gray-600 max-w-2xl mx-auto">
+      Valida tu cuenta como organización autorizada y agrega tus eventos al calendario cultural.
+    </p>
+
+    <!-- Componente React del formulario -->
+    <EventForm client:load />
+  </main>
+</Layout>
+
+<!-- Importamos el formulario React -->
+<!-- EventForm import moved to the frontmatter above -->
