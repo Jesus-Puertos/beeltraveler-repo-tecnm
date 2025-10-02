@@ -7,6 +7,7 @@ type EventsMap = Record<string, Event[]>;
 
 export default function Calendar() {
   const currentYear = 2021;
+  
   const currentMonth = 1;
 
   const daysInMonth = (month: number, year: number) =>
