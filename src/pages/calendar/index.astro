@@ -1,0 +1,14 @@
+---
+import Container from "@/components/Container.astro";
+import Layout from "@/layouts/Layout.astro";
+import CalendarComponent from "@/components/Calendar.tsx";
+
+
+---
+
+<Layout title="Calendario - BeeTraveler">
+<Container>
+  <h1 class="text-2xl font-bold my-6">Calendario</h1>
+ <CalendarComponent client:load />
+</Container>
+</Layout>
