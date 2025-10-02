@@ -26,8 +26,27 @@
         "link": "./",
         "image": "./services/03.svg"
     },
-    {
+     {
         "id": 4,
+        "name1": "Marketplace de artesanías y productos locales",
+        "description": "Marketplace para productos locales.",
+        "background": "h-[310px] p-12 bg-black rounded-[45px] shadow-card border border-black justify-between items-center flex text-white",
+        "arrow": "./services/aw.svg",
+        "link": "./",
+        "image": "./services/01.svg"
+    },
+     {
+        "id": 5,
+        "name1": "Publicidad y promoción de eventos de organizaciones",
+        "description": "Promoción de eventos para organizaciones.",
+        "background": "h-[310px] p-12 bg-black rounded-[45px] shadow-card border border-black justify-between items-center flex text-white",
+        "arrow": "./services/aw.svg",
+        "link": "./",
+        "image": "./services/04.svg"
+    },
+
+    {
+        "id": 6,
         "name1": "Promoción de Destinos Emergentes",
         "description": "Promoción de nuevos destinos.",
         "background": "h-[310px] p-12 bg-zinc-100 rounded-[45px] shadow-card border border-black justify-between items-center flex text-black",
@@ -36,7 +55,7 @@
         "image": "./services/04.svg"
     },
     {
-        "id": 5,
+        "id": 7,
         "name1": "Experiencias Personalizadas",
         "description": "Viajes personalizados.",
         "background": "h-[310px] p-12 bg-lime rounded-[45px] shadow-card border border-black justify-between items-center flex text-black",
@@ -45,7 +64,7 @@
         "image": "./services/05.svg"
     },
     {
-        "id": 6,
+        "id": 8,
         "name1": "Regulación y Estándares de Calidad:",
         "description": "Cumplimiento de estándares de calidad.",
         "background": "h-[310px] p-12 bg-black rounded-[45px] shadow-card border border-black justify-between items-center flex text-white",
