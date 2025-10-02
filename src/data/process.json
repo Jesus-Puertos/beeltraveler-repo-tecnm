@@ -1,0 +1,22 @@
+{
+  "process": [
+    {
+      "index": 1,
+      "label": "Planificación",
+      "content": "Planificamos tu viaje perfecto",
+      "icon": "🗺️"
+    },
+    {
+      "index": 2,
+      "label": "Reservación", 
+      "content": "Reservamos todo por ti",
+      "icon": "📅"
+    },
+    {
+      "index": 3,
+      "label": "Experiencia",
+      "content": "Disfruta tu experiencia única",
+      "icon": "✨"
+    }
+  ]
+}

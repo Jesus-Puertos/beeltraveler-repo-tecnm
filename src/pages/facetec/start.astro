@@ -3,7 +3,7 @@ import { supabaseServer } from "../../lib/supabaseServer";
 
 export const prerender = false;
 
-export async function get({ cookies, redirect }) {
+export async function get({ cookies, redirect }: any) {
   const supabase = supabaseServer(cookies);
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return redirect("/signin");

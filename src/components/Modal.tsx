@@ -1,4 +1,3 @@
-import React from "react";
 import { googleCalendarLink, icsFile } from "./CalendarLinks";
 
 type Event = {
