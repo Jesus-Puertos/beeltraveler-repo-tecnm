@@ -1,74 +1,14 @@
 ---
+import Container from "@/components/Container.astro";
 import Layout from "@/layouts/Layout.astro";
 import CalendarComponent from "@/components/Calendar.tsx";
-import Features from "@/components/Features.astro";
+
+
 ---
 
 <Layout title="Calendario - BeeTraveler">
-  <main class="space-y-20">
-    
-   <section class="relative bg-gradient-to-r from-primary to-black py-24 md:py-32 min-h-[500px] flex items-center">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 items-center gap-12">
-    
-    <!-- Texto -->
-    <div class="text-center md:text-left text-white">
-      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-md">
-        Agenda Cultural <br class="hidden md:block" /> México 2025
-      </h1>
-      <p class="mt-6 text-xl md:text-2xl text-white/90 max-w-xl mx-auto md:mx-0 leading-relaxed">
-        Descubre los próximos festivales, conciertos, exposiciones y tradiciones en todo el país.  
-        Agrega eventos a tu calendario y vive la experiencia cultural como nunca antes.
-      </p>
-      <div class="mt-10 flex justify-center md:justify-start gap-6">
-        <!-- Botón principal -->
-        <a 
-          href="#calendario" 
-          class="px-10 py-4 bg-white text-black font-bold rounded-lg shadow-lg hover:bg-gray-100 transition transform hover:scale-105 text-lg"
-        >
-          📅 Ver Calendario
-        </a>
-        <!-- Botón secundario -->
-        <a 
-          href="/landing" 
-          class="px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition transform hover:scale-105 text-lg"
-        >
-          🚀 Ir a la Landing
-        </a>
-      </div>
-    </div>
-
-    <!-- Imagen -->
-    <div class="flex justify-center">
-      <img 
-        src="public/hero.webp"
-        alt="Evento cultural en México" 
-        class="rounded-2xl shadow-2xl max-h-[480px] object-cover ring-4 ring-white/40"
-      />
-    </div>
-  </div>
-</section>
-    <!-- 📅 Calendario -->
-    <section id="calendario" class="max-w-5xl mx-auto px-4">
-      <CalendarComponent client:load />
-    </section>
-
-    <!-- ✨ Features -->
-    <section class="max-w-6xl mx-auto px-4">
-      <Features />
-    </section>
-
-    <!-- 🚀 CTA Landing -->
-    <section class="text-center py-20 bg-gradient-to-r from-green-400 to-green-600 text-white rounded-lg mx-4">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Quieres más experiencias?</h2>
-      <p class="mb-6 text-lg">
-        Descubre todo lo que tenemos preparado para ti en nuestra landing especial.
-      </p>
-      <a 
-        href="/landing" 
-        class="px-8 py-4 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-50 transition transform hover:scale-105"
-      >
-        Ir a la Landing →
-      </a>
-    </section>
-  </main>
+<Container>
+  <h1 class="text-2xl font-bold my-6">Calendario</h1>
+ <CalendarComponent client:load />
+</Container>
 </Layout>
