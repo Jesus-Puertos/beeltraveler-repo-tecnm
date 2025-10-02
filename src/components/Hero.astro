@@ -2,46 +2,58 @@
 import Container from "./Container.astro";
 import Patners from "./Patners.astro";
 import { supabase } from "@/lib/supabase";
+
 let session = (await supabase.auth.getSession()).data.session;
 const userId = session?.user?.id ?? "";
 const email = session?.user?.email ?? "";
 ---
 
 <Container>
-  <div
-    class="relative  flex flex-col-reverse items-center md:flex-row"
+  <section
+
     id="hero"
+    class="relative flex flex-col-reverse items-center md:flex-row py-10 md:py-20"
   >
-    <div class="row items-center py-5 md:w-6/12 md:pb-20 md:pt-10">
-      <div class="text-left space-y-3">
-        <h1
-          class="text-5xl font-medium leading-none md:text-6xl text-center md:text-left"
-        >
-          BeelGo<br />Tu ruta hacia<br />México
-        </h1>
-        <p
-          class="mt-6 mb-8 text-xl font-normal leading-7 sm:mb-12 text-center md:text-left"
-        >
-          La plataforma digital que une turismo, cultura y comercio local.
-          Descubre experiencias auténticas, conecta con agencias, accede a un
-          marketplace único y encuentra los mejores eventos en un solo lugar.
-        </p>
+    <!-- Texto -->
+    <div class="md:w-6/12 text-center md:text-left space-y-6">
+      <h1
+        class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-gray-900"
+      >
+        BeelGo <br class="hidden md:block" />
+        <span class="text-primary">Tu ruta hacia México</span>
+      </h1>
+
+      <p
+        class="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-xl mx-auto md:mx-0 leading-relaxed"
+      >
+        La plataforma digital que une turismo, cultura y comercio local.
+        Descubre experiencias auténticas, conecta con agencias, accede a un
+        marketplace único y encuentra los mejores eventos en un solo lugar.
+      </p>
+
+      <!-- CTA -->
+      <div class="flex justify-center md:justify-start">
         <div
           class="w-full justify-center md:justify-start items-center inline-flex"
         >
           <div data-tf-live="01K6JPF1QTZ4B7ZSS2K8747CZG"></div>
         </div>
+
       </div>
     </div>
-    <div class="flex items-center py-5 md:w-6/12 md:pb-20 md:pt-10">
-      <img src="/turismo.jpg" width="100%" alt="BeelGo Hero" />
+
+    <!-- Imagen -->
+    <div class="md:w-6/12 flex justify-center mb-10 md:mb-0">
+      <img
+        src="/turismo.jpg"
+        alt="BeelGo Hero"
+        class="rounded-2xl shadow-2xl max-h-[400px] object-cover ring-4 ring-primary/20"
+      />
     </div>
-  </div>
+  </section>
+
   <Patners />
 </Container>
 
 <script src="//embed.typeform.com/next/embed.js" is:inline></script>
-
--
-
 
