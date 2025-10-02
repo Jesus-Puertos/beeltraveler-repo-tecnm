@@ -2,10 +2,16 @@ export function googleCalendarLink({
   title,
   description,
   date,
+  startTime,
+  endTime,
+  location,
 }: {
   title: string;
   description: string;
   date: string;
+  startTime?: string;
+  endTime?: string;
+  location?: string;
 }) {
   if (!date) return "#";
 
@@ -26,10 +32,16 @@ export function icsFile({
   title,
   description,
   date,
+  startTime,
+  endTime,
+  location,
 }: {
   title: string;
   description: string;
   date: string;
+  startTime?: string;
+  endTime?: string;
+  location?: string;
 }) {
   if (!date) return "#";
 
