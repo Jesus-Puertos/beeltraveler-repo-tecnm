@@ -1,4 +1,4 @@
-import { type FC, useRef, useState, useEffect, type MutableRefObject } from 'react';
+import { type FC, useRef, useState, useEffect, type RefObject } from 'react';
 import { mat4, quat, vec2, vec3 } from 'gl-matrix';
 
 
@@ -1060,7 +1060,7 @@ interface InfiniteMenuProps {
 }
 
 const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null) as MutableRefObject<HTMLCanvasElement | null>;
+  const canvasRef = useRef<HTMLCanvasElement | null>(null) as RefObject<HTMLCanvasElement | null>;
   const [activeItem, setActiveItem] = useState<MenuItem | null>(null);
   const [isMoving, setIsMoving] = useState<boolean>(false);
 
