@@ -1,0 +1,27 @@
+  ---
+import Accordion from "@/components/Accordion.astro";
+import Topic from "@/components/Topic.astro";
+import process from '@/data/process.json'
+
+  ---
+  
+  <!-- FAQ -->
+<div class="relative flex flex-col items-center md:flex-row mt-6">
+  <Topic
+    title="Preguntas frecuentes"
+    description="Conoce cómo funciona BeelPedia y cómo puedes participar"
+  />
+</div>
+
+<div class="my-6">
+  <!-- Grid responsivo -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {process.process.map((item) => (
+      <Accordion
+        index={item.index}
+        title={item.label}
+        description={item.content}
+      />
+    ))}
+  </div>
+</div>

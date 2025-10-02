@@ -23,71 +23,72 @@
         },
         {
             "title": "Integrante",
-            "name": "Jesus Alberto Rodriguez Puertos",
+            "name": "Saúl Reyes Perez",
             "description": "Ingeniero en Sistemas Computacionales",
             "profile": "/team/saul.jfif",
             "link": "/"
         },
         {
             "title": "Integrante",
-            "name": "Marco Antonio Romero Andrade",
+            "name": "David Valdes Lopez",
             "description": "Ingeniero en Sistemas Computacionales",
             "profile": "/team/david.jfif",
             "link": "/"
         },
         {
             "title": "Integrante",
-            "name": "Alejandra Escarlet Aguilar García",
-            "description": "Ingeniero en Gestión Empresarial",
+            "name": "Rubi Dominguez Sanchez",
+            "description": "Ingeniera en Gestión Empresarial",
             "profile": "/team/rubi.jfif",
             "link": "/"
         }
     ],
     "process": [
-        {
-            "index": 1,
-            "label": "¿Qué costo tiene registrarme?",
-            "content": "En Beeltraveler, no tiene ningun costo registrarse, sin embargo debes cumplir nuestros requerimientos ✅."
-        },
-        {
-            "index": 2,
-            "label": "¿Qué servicios hay?",
-            "content": "Con la experiencia Beeltraveler puedes grantizar un viaje con las mejores agencias asociadas con nosotros, incluso donde no las hay, puedes contratar un guia privado.."
-        },
-        {
-            "index": 3,
-            "label": "¿Puedo personalizar mi viaje?",
-            "content": "Con nuestra plataforma puedes consultar y planificar los mejores lugares y agencias que se ajusten a tu bolsillo."
-        },
-        {
-            "index": 4,
-            "label": "¿Comó puedo reservar?",
-            "content": "Puedes ponerte en contacto con la agencia de tu elección ó con tu guia privado. ."
-        },
-        {
-            "index": 5,
-            "label": "Métodos de pago",
-            "content": "En Beeltraveler puedes pagar con tu trajeta de crédito a msi y débito."
-        },
-        {
-            "index": 6,
-            "label": "¿Comó puedo cancelar",
-            "content": "Una vez echo tu contrato, puedes contactar con tu agencia o provedor para cancelar. Puedes consultar los reembolsos en nuestra sección de rembolsos ."
-        },
-        {
-            "index": 7,
-            "label": "¿Cuáles son las politicas de reembolso?",
-            "content": "Cancelaciones con más de 30 días de anticipación se reembolsa el 100% menos una tarifa administrativa, cancelaciones con 15 dias un 50%, menor a estos dias no se reembolsara."
-        },
-        {
-            "index": 8,
-            "label": "Plazos para realizar los pagos",
-            "content": "Si desear pagr a MSI debes aplica las promociones correspondientes."
-        },
-        {
-            "index": 9,
-            "label": "PROMOCIONES",
-            "content": " Tenemos promociones todo el año, puedes consultarlas en nuestra seccion de promociones."
-        }
-    ]
+  {
+    "index": 1,
+    "label": "¿Qué costo tiene registrarme?",
+    "content": "En BeelGo no tiene ningún costo registrarse ✅. Solo debes cumplir con nuestros requisitos básicos."
+  },
+  {
+    "index": 2,
+    "label": "¿Qué servicios ofrecen?",
+    "content": "Con la experiencia BeelTraveler puedes garantizar tu viaje con las mejores agencias asociadas a nuestra plataforma. Incluso en lugares donde no hay agencias disponibles, podrás contratar un guía privado."
+  },
+  {
+    "index": 3,
+    "label": "¿Puedo personalizar mi viaje?",
+    "content": "Sí, con nuestra plataforma puedes consultar y planificar destinos, actividades y agencias que se ajusten a tus gustos y a tu presupuesto."
+  },
+  {
+    "index": 4,
+    "label": "¿Cómo puedo reservar?",
+    "content": "Puedes ponerte en contacto directamente con la agencia de tu elección o con un guía privado desde nuestra plataforma."
+  },
+  {
+    "index": 5,
+    "label": "¿Qué métodos de pago aceptan?",
+    "content": "En BeelGo puedes pagar con tarjeta de crédito a meses sin intereses (MSI) y con tarjeta de débito."
+  },
+  {
+    "index": 6,
+    "label": "¿Cómo puedo cancelar una reserva?",
+    "content": "Una vez hecho tu contrato, puedes contactar con tu agencia o proveedor para cancelar. Consulta los detalles en la sección de reembolsos."
+  },
+  {
+    "index": 7,
+    "label": "¿Cuáles son las políticas de reembolso?",
+    "content": "Cancelaciones con más de 30 días de anticipación reciben un reembolso del 100% menos una tarifa administrativa. Con 15 días de anticipación, el 50%. Con menos de 15 días no aplica reembolso."
+  },
+  {
+    "index": 8,
+    "label": "¿Cuáles son los plazos para realizar los pagos?",
+    "content": "Si deseas pagar a MSI (Meses Sin Intereses), debes aplicar a las promociones y condiciones correspondientes."
+  },
+  {
+    "index": 9,
+    "label": "¿Tienen promociones?",
+    "content": "Sí 🎉. Contamos con promociones durante todo el año, las puedes consultar en nuestra sección de Promociones."
+  }
+]
+
 }
