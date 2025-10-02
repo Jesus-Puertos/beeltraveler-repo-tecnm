@@ -1,15 +1,37 @@
 ---
 const slides = [
-  { index: 1, name: "John Johnson", description: "Marketing dierector at XYZ" },
-  { index: 2, name: "Ana Banana", description: "Marketing dierector at XYZ" },
-  {
-    index: 3,
-    name: "Camilo Corintio",
-    description: "Marketing dierector at XYZ",
+  { 
+    index: 1, 
+    name: "María López", 
+    description: "Agente de viajes afiliada a BeelGo", 
+    testimonial: "Gracias a BeelGo he podido conectar con más clientes que buscan experiencias auténticas en México. La plataforma me da visibilidad y confianza." 
   },
-  { index: 4, name: "Karla Kaz", description: "Marketing dierector at XYZ" },
-  { index: 5, name: "Johanna Jana", description: "Marketing dierector at XYZ" },
+  { 
+    index: 2, 
+    name: "Jorge Ramírez", 
+    description: "Guía turístico certificado", 
+    testimonial: "BeelGo me ha permitido ofrecer recorridos culturales en mi región y llegar a turistas que de otra manera nunca hubieran conocido mi trabajo." 
+  },
+  { 
+    index: 3, 
+    name: "Ana Torres", 
+    description: "Visitante y usuaria de BeelGo", 
+    testimonial: "Reservar mi viaje fue muy fácil y seguro. Pude elegir entre varias agencias locales y encontré la opción perfecta para mi presupuesto." 
+  },
+  { 
+    index: 4, 
+    name: "Carlos Méndez", 
+    description: "Artesano local", 
+    testimonial: "Con el marketplace de BeelGo ahora vendo mis productos a turistas que quieren llevarse un pedacito de nuestra cultura a casa." 
+  },
+  { 
+    index: 5, 
+    name: "Lucía Fernández", 
+    description: "Organizadora de eventos culturales", 
+    testimonial: "El calendario de BeelGo me ha ayudado a difundir nuestros festivales locales. Más personas se enteran y participan en nuestras tradiciones." 
+  }
 ];
+
 ---
 
 <div
@@ -33,12 +55,8 @@ const slides = [
         >
           <div class="flex flex-col justify-center items-center py-[48px] px-6 sm:px-[52px]">
             <p class="bubble">
-              "We have been working with Positivus for the past year and have
-              seen a significant increase in website traffic and leads as a
-              result of their efforts. The team is professional, responsive, and
-              truly cares about the success of our business. We highly recommend
-              Positivus to any company looking to grow their online presence."
-            </p>
+  "{slide.testimonial}"
+</p>
           </div>
           <div class="w-full px-10 sm:px-20 ">
             <div class="text-lime text-base md:text-xl font-medium">{slide.name}</div>
