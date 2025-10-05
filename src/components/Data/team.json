@@ -1,45 +1,38 @@
 {
     "team": [
         {
-            "title": "Asesor",
-            "name": "I.S.C Ricardo Garcia Castro",
-            "description": "Jefe de carrera de la ISC , coordinador de tecnología en la UA Tequila",
-            "profile": "/team/ricardo.jfif",
+            "title": "Lider de proyecto.",
+            "name": "Ariel Acxel Nuñez López.",
+            "description": "lorem impsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "profile": "/team/ariel.jpeg",
+            "link": "/"
+        },
+        {
+            "title": "Co fundador.",
+            "name": "I.S.C. Jesús Alberto Rodriguez Puertos.",
+            "description": "Apasionado por la tecnología, el aprendizaje constante y la innovación 💻🚀. Me encanta crear proyectos que ayuden a mi comunidad 🌎, combinar arte y ciencia 🎨⚙️, y seguir creciendo tanto profesional como personalmente 🌱. Además, disfruto compartir tiempo con mi familia ❤️ y mis mascotas 🐶🐱.",
+            "profile": "/team/jesus-puertos.jpg",
             "link": "/"
         },
         {
             "title": "Integrante",
-            "name": "Jesus Alberto Rodriguez Puertos",
-            "description": "Ingeniero en Sistemas Computacionales",
-            "profile": "/team/jesus.jfif",
+            "name": "I.S.C. Arlyn Alfaro Dominguez.",
+            "description": "Ingeniera en Sistemas Computacionales apasionada por la tecnología y los viajes 🌍. Fan de 5 Seconds of Summer 🎵, amante de la épica trilogía de El Señor de los Anillos y El Hobbit 🧙‍♂️✨. Disfruta construyendo con LEGO 🧱, explorando áreas verdes 🌿, caminando al aire libre 🚶‍♀️ y descubriendo nuevos destinos mientras escucha su música favorita 🎧.",
+            "profile": "/team/arlyn-alfaro.jpg",
             "link": "/"
         },
         {
             "title": "Integrante",
-            "name": "Guillermo Díaz Ramos",
-            "description": "Ingeniero en Sistemas Computacionales",
-            "profile": "/team/memo.jfif",
+            "name": "I.S.C. Luis Almir Dominguez Puertos.",
+            "description": "Ingeniero en Sistemas Computacionales lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "profile": "/team/luis-almir.jpg",
             "link": "/"
         },
         {
             "title": "Integrante",
-            "name": "Saúl Reyes Perez",
-            "description": "Ingeniero en Sistemas Computacionales",
-            "profile": "/team/saul.jfif",
-            "link": "/"
-        },
-        {
-            "title": "Integrante",
-            "name": "David Valdes Lopez",
-            "description": "Ingeniero en Sistemas Computacionales",
-            "profile": "/team/david.jfif",
-            "link": "/"
-        },
-        {
-            "title": "Integrante",
-            "name": "Rubi Dominguez Sanchez",
-            "description": "Ingeniera en Gestión Empresarial",
-            "profile": "/team/rubi.jfif",
+            "name": "M.S.C. Aldo Carlos Ruiz Jurado",
+            "description": "Profesional en gestión de proyectos tecnológicos, docente e investigador educativo, con experiencia en desarrollo de software y DBA.",
+            "profile": "/team/aldo.jpeg",
             "link": "/"
         }
     ],
