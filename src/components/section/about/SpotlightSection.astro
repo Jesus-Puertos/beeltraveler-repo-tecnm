@@ -1,0 +1,42 @@
+---
+import SpotlightCard from "@/components/SpotlightCard";
+---
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 p-4">
+  <SpotlightCard
+    client:load
+    className="custom-spotlight-card flex flex-col justify-center items-center w-44 "
+    spotlightColor="rgba(255, 255, 255, 0.2)"
+  >
+    <img src="/services/road-trip-56.svg" alt="" class="size-16 mb-2" />
+    <h1 class="text-xl text-white">+500</h1>
+    <p class="text-white uppercase mb-2">viajes realizados</p>
+  </SpotlightCard>
+  <SpotlightCard
+    client:load
+    className="custom-spotlight-card flex flex-col justify-center items-center w-44 "
+    spotlightColor="rgba(255, 255, 255, 0.2)"
+  >
+    <img src="/services/01.svg" alt="" class="size-16 mb-2" />
+    <h1 class="text-xl text-white">+35</h1>
+    <p class="text-white uppercase mb-2">agencias afiliadas</p>
+  </SpotlightCard>
+  <SpotlightCard
+    client:load
+    className="custom-spotlight-card flex flex-col justify-center items-center w-44 "
+    spotlightColor="rgba(255, 255, 255, 0.2)"
+  >
+    <img src="/services/order-confirmed-1-76.svg" alt="" class="size-16 mb-2" />
+    <h1 class="text-xl text-white">+1200</h1>
+    <p class="text-white uppercase mb-2">Artesanos ayudados</p>
+  </SpotlightCard>
+  <SpotlightCard
+    client:load
+    className="custom-spotlight-card flex flex-col justify-center items-center w-44 "
+    spotlightColor="rgba(255, 255, 255, 0.2)"
+  >
+    <img src="/services/05.svg" alt="" class="size-16 mb-2" />
+    <h1 class="text-xl text-white">+300</h1>
+    <p class="text-white uppercase mb-2">Eventos promocionados</p>
+  </SpotlightCard>
+</div>
