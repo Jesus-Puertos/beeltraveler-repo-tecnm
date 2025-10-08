@@ -1,31 +1,85 @@
----
-import Container from "./Container.astro";
----
+<footer class="bg-gradient-to-b from-emerald-50 to-lime-100 text-emerald-900 px-6 py-12 border-t border-emerald-200">
+  <div class="max-w-screen-xl mx-auto md:flex md:justify-between md:items-start gap-12">
+    <!-- Columna izquierda -->
+    <div class="flex-1">
+      <div class="max-w-xs">
+        <img src="/logo.webp" alt="BeelGo logo" class="w-32" />
+        <p class="leading-relaxed mt-3 text-emerald-800 text-sm">
+          BeelGo es un ecosistema digital que conecta el turismo, la cultura y el talento local. 
+          Desde experiencias únicas hasta productos artesanales, todo en un mismo lugar.
+        </p>
+      </div>
 
-<footer class="bg-lime bg-fixed bg-bottom text-black">
-    <Container>
-        <div class="py-6">
-            <div class="flex flex-col items-center justify-between md:flex-row">
-                <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img class="h-32" src="/Beeltravel-logo.webp" alt="Logo" />
-                </div>
-                <a href="/about">Sobre nosotros</a>
-                <div class="flex mt-4 md:m-0">
-                    <div class="-mx-4">
-                        @ <span id="currentYear"></span> SIERACOD | Hecho con <a
-                            href="https://astro.build/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="underline">Astro</a
-                        >
-                    </div>
-                </div>
-            </div>
+      <!-- Newsletter -->
+      <form class="mt-6">
+        <label class="block font-medium text-emerald-900">Mantente conectado</label>
+        <div class="flex items-center mt-2 border border-emerald-300 rounded-md overflow-hidden">
+          <input
+            type="email"
+            placeholder="Ingresa tu correo"
+            class="w-full p-2.5 outline-none text-sm text-emerald-800 bg-white"
+          />
+          <button
+            type="submit"
+            class="px-5 py-2.5 bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition"
+          >
+            Suscribirse
+          </button>
         </div>
-    </Container>
-</footer>
+      </form>
+    </div>
 
-<script is:inline>
-    const year = new Date().getFullYear();
-    document.getElementById("currentYear").innerHTML = `${year}`;
-</script>
+    <!-- Navegación -->
+    <div class="flex-1 grid grid-cols-2 gap-8 sm:grid-cols-3 mt-10 md:mt-0">
+      <div>
+        <h4 class="text-emerald-900 font-semibold mb-3">Explora</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/paquetes" class="hover:text-emerald-600">BeelTraveler</a></li>
+          <li><a href="/marketplace" class="hover:text-emerald-600">BeelArtisan</a></li>
+          <li><a href="/articles" class="hover:text-emerald-600">BeelPedia</a></li>
+          <li><a href="/calendar" class="hover:text-emerald-600">BeelFest</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-emerald-900 font-semibold mb-3">Recursos</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/about" class="hover:text-emerald-600">Sobre nosotros</a></li>
+          <li><a href="/pricing" class="hover:text-emerald-600">Precios</a></li>
+          <li><a href="/dashboard" class="hover:text-emerald-600">Panel</a></li>
+          <li><a href="/perfil" class="hover:text-emerald-600">Perfil</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-emerald-900 font-semibold mb-3">Legal</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/terminos" class="hover:text-emerald-600">Términos</a></li>
+          <li><a href="/privacidad" class="hover:text-emerald-600">Privacidad</a></li>
+          <li><a href="/licencia" class="hover:text-emerald-600">Licencia</a></li>
+          <li><a href="/contacto" class="hover:text-emerald-600">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer inferior -->
+  <div class="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-sm text-emerald-600">
+    <p>&copy; 2025 BeelGo. Todos los derechos reservados.</p>
+    <ul class="flex items-center space-x-4 mt-4 sm:mt-0">
+      <li>
+        <a href="https://facebook.com" aria-label="Facebook" class="hover:text-blue-700 transition">
+          📘
+        </a>
+      </li>
+      <li>
+        <a href="https://instagram.com" aria-label="Instagram" class="hover:text-pink-600 transition">
+          📷
+        </a>
+      </li>
+      <li>
+        <a href="https://youtube.com" aria-label="YouTube" class="hover:text-red-600 transition">
+          ▶️
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>

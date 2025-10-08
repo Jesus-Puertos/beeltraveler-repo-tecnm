@@ -6,28 +6,7 @@ import Accordion from "./Accordion.astro";
 ---
 
 <Container>
-  <div class="relative flex flex-col items-center md:flex-row mt-6">
-    <Topic
-      title="Preguntas frecuentes"
-      description="Conoce más sobre nuestro equipo y cómo trabajamos"
-    />
-  </div>
-
-  <div class="my-6">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-      {
-        teamData.process.map((item) => {
-          return (
-            <Accordion
-              index={item.index}
-              title={item.label}
-              description={item.content}
-            />
-          );
-        })
-      }
-    </div>
-  </div>
+  
 
   <div class="relative flex flex-col items-center md:flex-row pt-6">
     <Topic

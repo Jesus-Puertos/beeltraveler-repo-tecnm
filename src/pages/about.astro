@@ -2,6 +2,11 @@
 import Container from "../components/Container.astro";
 import Layout from "../layouts/Layout.astro";
 import Team from "../components/Team.astro";
+import MagicBento from "@/components/ui/animated/MagicBento";
+import RotatingText from "@/components/ui/animated/RotatingText";
+
+
+import SpotlightSection from "@/components/section/about/SpotlightSection.astro";
 ---
 
 <Layout title="Bienvenido a BeelGo">
@@ -14,10 +19,37 @@ import Team from "../components/Team.astro";
       >
         <div class="row items-center py-5 md:pb-20 md:pt-10">
           <div class="text-center space-y-10">
-            <h1 class="text-5xl font-medium leading-none md:text-6xl">
-              Es momento de preservar y viajar
-            </h1><br /><h2>Con BeelGo</h2>
-            <p class="mt-6 mb-8 text-xl font-normal leading-7 sm:mb-12">
+            <div
+              class="flex flex-col items-center justify-center overflow-hidden -mt-24 h-screen w-full m-auto"
+            >
+              <h1
+                class="text-5xl text-center font-medium leading-none md:text-6xl"
+              >
+                Es momento de <RotatingText
+                  client:load
+                  texts={["Preservar.", "Viajar.", "Descubrir.", "!BeelGo!"]}
+                  mainClassName="px-2 text-6xl sm:px-2 md:px-3 bg-lime-400 text-black uppercase overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                  staggerFrom={"last"}
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "-120%" }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                  rotationInterval={2000}
+                />
+              </h1>
+
+              <p class="text-2xl font-normal leading-7 mt-6">
+                En el <strong> BeelGo </strong>estamos comprometidos con la
+                preservación del medio ambiente y el apoyo a las comunidades
+                locales.
+              </p>
+              <SpotlightSection />
+            </div>
+
+
+            <p class="mt-6 mb-8 text-xl font-normal leading-7 sm:mb-12 animate-fade-in">
               BeelGo es una plataforma innovadora dedicada a la preservación y
               difusión de la herencia cultural de México. Integra herramientas
               digitales que permiten a los usuarios explorar mapas interactivos,
@@ -42,83 +74,24 @@ import Team from "../components/Team.astro";
         </div>
       </div>
 
+      
       <!-- MISIÓN / VISIÓN / VALORES -->
-      <div
-        class="w-full p-12 bg-zinc-900 rounded-[45px] justify-start items-start gap-16 inline-flex text-white"
-      >
-        <div
-          class="grid grid-cols-1 md:grid-cols-3 gap-2 divide-x-0 md:divide-x divide-y md:divide-y-0"
-        >
-          <!-- Misión -->
-          <div
-            class="flex-col items-start gap-5 inline-flex px-2 md:px-6 py-6 md:py-2"
-          >
-            <h1>Misión</h1>
-            <div class="w-full text-lg font-normal">
-              BeelGo busca rescatar, preservar y promover la herencia cultural
-              de México mediante el uso de la tecnología. Nuestra misión es
-              ofrecer un espacio digital donde se integren viajes, productos
-              artesanales y eventos culturales, generando oportunidades para
-              comunidades locales y experiencias significativas para los
-              usuarios.
-            </div>
-          </div>
-
-          <!-- Visión -->
-          <div
-            class="flex-col items-start gap-5 inline-flex px-2 md:px-6 py-6 md:py-2"
-          >
-            <h1>Visión</h1>
-            <div class="w-full text-lg font-normal">
-              Ser la plataforma líder en preservación cultural y turismo
-              responsable, reconocida por conectar a viajeros con artesanos,
-              guías y organizaciones que representan la riqueza cultural de
-              México. Aspiramos a construir un puente entre tradición e
-              innovación, asegurando que la cultura se conserve y se comparta
-              con nuevas generaciones.
-            </div>
-          </div>
-
-          <!-- Valores -->
-          <div
-            class="flex-col items-start gap-5 inline-flex px-2 md:px-6 py-6 md:py-2"
-          >
-            <div class="w-full text-lg font-normal">
-              <h1>Valores de BeelGo</h1>
-              <ul>
-                <li>
-                  <strong>Preservación:</strong> Rescatar y proteger la riqueza
-                  cultural de México.
-                </li>
-                <li>
-                  <strong>Innovación:</strong> Usar tecnología para difundir y
-                  acercar la cultura.
-                </li>
-                <li>
-                  <strong>Sostenibilidad:</strong> Promover turismo responsable
-                  y comercio justo.
-                </li>
-                <li>
-                  <strong>Autenticidad:</strong> Valorar lo genuino y lo propio
-                  de cada región.
-                </li>
-                <li>
-                  <strong>Colaboración:</strong> Fortalecer lazos entre
-                  viajeros, artesanos y comunidades.
-                </li>
-                <li>
-                  <strong>Accesibilidad:</strong> Hacer que la cultura esté al
-                  alcance de todos.
-                </li>
-                <li>
-                  <strong>Inclusión:</strong> Celebrar la diversidad cultural y
-                  social.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h2 class="text-center text-4xl font-bold mb-10">
+        Misión · Visión · Valores
+      </h2>
+      <MagicBento
+        textAutoHide={false}
+        enableStars={true}
+        enableSpotlight={true}
+        enableBorderGlow={true}
+        enableTilt={true}
+        enableMagnetism={true}
+        clickEffect={true}
+        spotlightRadius={300}
+        particleCount={12}
+        glowColor="185, 255, 102"
+        client:load
+      />
       <br />
       <Team />
       <br />
