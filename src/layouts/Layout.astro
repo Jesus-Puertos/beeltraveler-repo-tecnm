@@ -26,7 +26,9 @@ if (accessToken) {
   );
 
   // 🔑 Obtener usuario logueado
-  const { data: { user: currentUser } } = await supabaseServer.auth.getUser();
+  const {
+    data: { user: currentUser },
+  } = await supabaseServer.auth.getUser();
 
   if (currentUser) {
     user = currentUser;
@@ -64,10 +66,12 @@ if (accessToken) {
     />
     <ViewTransitions />
   </head>
-  <body class="bg-gradient-to-br from-green-50 via-white to-emerald-50 font-SpaceGrotesk">
+  <body
+    class="bg-gradient-to-br from-green-50 via-white to-emerald-50 font-SpaceGrotesk"
+  >
     <Navbar user={user} displayName={displayName} avatar={avatar} />
     <slot />
     <Footer />
     <script type="text/javascript" src="./dist/main.js" is:inline></script>
-  </body>
+  </body><script is:inline src="/node_modules/preline/dist/preline.js"></script>
 </html>
