@@ -1,0 +1,180 @@
+<!-- Div para observar el scroll y mostrar/ocultar el botón -->
+<div
+  id="scroll-observer"
+  class="pointer-events-none absolute top-[300px] left-0 h-[1px] w-[1px]"
+  aria-hidden="true"
+>
+</div>
+
+<a
+  class="via-theme-blue hover:to-theme-blue fixed right-8 bottom-8 z-40 flex h-12 w-12 flex-col items-center justify-center overflow-hidden rounded-full bg-gradient-to-r from-lime-500 to-lime-400 opacity-0 shadow-lg"
+  id="back-to-top"
+  href="#top"
+  aria-label="Volver arriba"
+>
+  <svg viewBox="0 0 384 512" class="absolute h-5 w-4">
+    <path
+      fill="#fff"
+      d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+    ></path>
+  </svg>
+</a>
+
+<style>
+  a {
+    border: none;
+    border-radius: 50%;
+    transition: 500ms;
+    animation: shimmer 3s linear infinite;
+  }
+
+  a svg {
+    fill: white;
+    position: absolute;
+  }
+
+  a::after {
+    content: "Volver";
+    position: fixed;
+    transform: translateY(35px);
+    font-size: 14px;
+    transition: 500ms;
+    color: greenyellow;
+    user-select: none;
+  }
+
+  a:hover::after {
+    color: white;
+    mix-blend-mode: difference;
+  }
+
+  a:hover svg {
+    animation: bounce 2s infinite linear;
+  }
+
+  a::before {
+    content: "";
+    z-index: 10;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(30deg);
+    animation: shine 3s linear infinite;
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(4%);
+    }
+    25% {
+      transform: translateY(-8%);
+    }
+    50% {
+      transform: translateY(4%);
+    }
+    75% {
+      transform: translateY(-8%);
+    }
+    100% {
+      transform: translateY(4%);
+    }
+  }
+
+  button:focus {
+    outline: none;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%) rotate(30deg);
+    }
+    100% {
+      transform: translateX(100%) rotate(30deg);
+    }
+  }
+</style>
+
+<script>
+  if (typeof document !== "undefined") {
+    // Manage the back-to-top button and return a cleanup function
+    const manageBackToTopButton = () => {
+      const button = document.getElementById("back-to-top")
+      const observerTarget = document.getElementById("scroll-observer")
+
+      if (!button || !observerTarget) return
+
+      const updateButtonVisibility = (shouldShow: boolean) => {
+        requestAnimationFrame(() => {
+          if (shouldShow) {
+            button.classList.remove("opacity-0")
+            button.classList.add("opacity-100")
+
+            button.classList.add("cursor-pointer")
+            button.classList.remove("cursor-default")
+          } else {
+            button.classList.remove("opacity-100")
+            button.classList.add("opacity-0")
+
+            button.classList.remove("cursor-pointer")
+            button.classList.add("cursor-default")
+          }
+        })
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const isScrolledDown = !entries[0].isIntersecting
+          updateButtonVisibility(isScrolledDown)
+        },
+        { threshold: 0 }
+      )
+
+      observer.observe(observerTarget)
+
+      // cleanup function to disconnect the observer
+      return () => {
+        observer.disconnect()
+      }
+    }
+
+    // Store cleanup so we can disconnect before re-initializing on client-side navs
+    let cleanup: (() => void) | null = null
+
+    const initialize = () => {
+      if (cleanup) {
+        try {
+          cleanup()
+        } catch (e) {
+          // ignore errors during cleanup
+        }
+        cleanup = null
+      }
+
+      // manageBackToTopButton may return undefined if elements are not present
+      const maybeCleanup = manageBackToTopButton()
+      if (typeof maybeCleanup === "function") cleanup = maybeCleanup
+    }
+
+    // Initialize on first load
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initialize)
+    } else {
+      initialize()
+    }
+
+    // Re-run initialization after Astro client-side page swaps
+    document.addEventListener("astro:after-swap", initialize)
+  }
+</script>
