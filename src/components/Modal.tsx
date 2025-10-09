@@ -1,20 +1,29 @@
 import { googleCalendarLink, icsFile } from "./CalendarLinks";
 
-type Event = {
+// ModalEvent soporta tanto el formato original usado por este componente
+// (image, time, endTime) como el formato que viene desde la tabla `events`
+// (image_url, start_time, end_time). Esto evita errores de tipo al pasar
+// datos desde `Calendar.tsx` sin introducir una dependencia circular.
+type ModalEvent = {
+  id?: string;
   title: string;
   description: string;
-  image?: string;
-  place?: string;
-  time?: string;
-  endTime?: string;
+  // formatos de imagen
+  image?: string | null;
+  image_url?: string | null;
+  // lugar
+  place?: string | null;
+  // formatos de tiempo
+  time?: string | null;
+  endTime?: string | null;
+  start_time?: string | null;
+  end_time?: string | null;
 };
-
-
 
 interface ModalProps {
   show: boolean;
   date: string | null;
-  events: Event[];
+  events: ModalEvent[];
   onClose: () => void;
 }
 
@@ -30,56 +39,62 @@ export default function Modal({ show, date, events, onClose }: ModalProps) {
 
           {events.length > 0 ? (
             <ul className="event-list">
-              {events.map((ev, i) => (
-                <li key={i} className="event-item">
-                  {ev.image && (
-                    <img src={ev.image} alt={ev.title} className="event-img" />
-                  )}
-                  <div className="event-info">
-                    <h3>{ev.title}</h3>
-                    {ev.place && <h4>{ev.place}</h4>}
-                    {(ev.time || ev.endTime) && (
-                      <h4>
-                        {ev.time} {ev.endTime ? `- ${ev.endTime}` : ""}
-                      </h4>
+              {events.map((ev, i) => {
+                const img = ev.image || ev.image_url || undefined;
+                const start = ev.time || ev.start_time || "10:00";
+                const end = ev.endTime || ev.end_time || "12:00";
+
+                return (
+                  <li key={ev.id ?? i} className="event-item">
+                    {img && (
+                      <img src={img} alt={ev.title} className="event-img" />
                     )}
-                    <p>{ev.description}</p>
+                    <div className="event-info">
+                      <h3>{ev.title}</h3>
+                      {ev.place && <h4>{ev.place}</h4>}
+                      {(start || end) && (
+                        <h4>
+                          {start} {end ? `- ${end}` : ""}
+                        </h4>
+                      )}
+                      <p>{ev.description}</p>
 
-                    <div className="calendar-actions">
-                      <a
-                        href={googleCalendarLink({
-                          title: ev.title,
-                          description: ev.description,
-                          date,
-                          startTime: ev.time || "10:00",
-                          endTime: ev.endTime || "12:00",
-                          location: ev.place
-                        })}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="calendar-btn"
-                      >
-                        📅 Google Calendar
-                      </a>
+                      <div className="calendar-actions">
+                        <a
+                          href={googleCalendarLink({
+                            title: ev.title,
+                            description: ev.description,
+                            date,
+                            startTime: start,
+                            endTime: end,
+                            location: ev.place ?? undefined
+                          })}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="calendar-btn"
+                        >
+                          📅 Google Calendar
+                        </a>
 
-                      <a
-                        href={icsFile({
-                          title: ev.title,
-                          description: ev.description,
-                          date,
-                          startTime: ev.time || "10:00",
-                          endTime: ev.endTime || "12:00",
-                          location: ev.place
-                        })}
-                        download={`${ev.title}.ics`}
-                        className="calendar-btn"
-                      >
-                        📂 Descargar .ICS
-                      </a>
+                        <a
+                          href={icsFile({
+                            title: ev.title,
+                            description: ev.description,
+                            date,
+                            startTime: start,
+                            endTime: end,
+                            location: ev.place ?? undefined
+                          })}
+                          download={`${ev.title}.ics`}
+                          className="calendar-btn"
+                        >
+                          📂 Descargar .ICS
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              ))}
+                  </li>
+                );
+              })}
             </ul>
           ) : (
             <p className="empty">No hay eventos culturales en esta fecha.</p>

@@ -1,6 +1,12 @@
 import { createClient } from "@supabase/supabase-js";
 
-export async function getProfile(cookies) {
+// Minimal typing for the cookies object used in SSR environments.
+// Matches the shape used in Astro/Next-like runtimes: cookies.get(name)?.value
+type CookieLike = {
+  get(name: string): { value: string } | undefined;
+};
+
+export async function getProfile(cookies: CookieLike) {
   const token = cookies.get("sb-access-token")?.value;
   console.log("🟢 Token leído desde cookies:", token ? "Existe" : "No existe");
 
