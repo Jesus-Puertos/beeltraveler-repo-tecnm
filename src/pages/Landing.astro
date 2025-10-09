@@ -1,21 +1,170 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import EventForm from "../components/EventForm.tsx";
----
+import Layout from "@/layouts/Layout.astro";
+import EventForm from "@/components/EventForm.astro";
+import { createClient } from "@supabase/supabase-js";
+import LogOut from "@/components/Icons/LogOut.astro";
 
-<Layout title="Landing - BeeTraveler">
-  <main class="max-w-3xl mx-auto px-4 py-16 space-y-12">
-    <h1 class="text-4xl md:text-5xl font-extrabold text-center text-emerald-600">
+const { cookies, request, url } = Astro;
+const token = cookies.get("sb-access-token")?.value;
+
+const supabase = createClient(
+  import.meta.env.SUPABASE_URL,
+  import.meta.env.SUPABASE_ANON_KEY,
+  {
+    global: { headers: { Authorization: `Bearer ${token}` } },
+  }
+);
+
+let user = null;
+let profile = null;
+let message = null;
+let messageType: "success" | "warning" | "error" | null = null;
+let canPost = false;
+
+// 🧩 Obtener usuario actual y su rol
+const { data: userData } = await supabase.auth.getUser();
+user = userData?.user ?? null;
+
+if (user) {
+  const { data: prof, error: profErr } = await supabase
+    .from("profiles")
+    .select("role, nombre")
+    .eq("id", user.id)
+    .single();
+
+  if (!profErr && prof) {
+    profile = prof;
+    if (prof.role === "organizacion") {
+      canPost = true;
+    }
+  }
+} else {
+  message = "⚠️ No has iniciado sesión.";
+  messageType = "error";
+}
+
+// ✅ Si se envió el formulario
+if (request.method === "POST" && canPost) {
+  const formData = await request.formData();
+  const title = formData.get("title");
+  const description = formData.get("description");
+  const place = formData.get("place");
+  const date = formData.get("date");
+  const start_time = formData.get("start_time");
+  const end_time = formData.get("end_time");
+  const image_url = formData.get("image_url");
+
+  const { error } = await supabase.from("events").insert({
+    title,
+    description,
+    place,
+    date,
+    start_time,
+    end_time,
+    image_url,
+    author_id: user?.id,
+  });
+
+  if (error) {
+    message = `❌ Error al guardar el evento: ${error.message}`;
+    messageType = "error";
+  } else {
+    return Astro.redirect("/Landing?success=1");
+  }
+}
+
+// Detectar éxito
+const success = url.searchParams.get("success") === "1";
+if (success) {
+  message = "🎉 Tu evento fue publicado exitosamente.";
+  messageType = "success";
+}
+---
+<Layout title="Panel de Organizadores | BeelFest">
+  <main class="max-w-3xl mx-auto px-6 sm:px-10 py-16 space-y-10 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-emerald-600 drop-shadow-sm">
       🚀 Panel de Organizadores
     </h1>
-    <p class="text-center text-lg text-gray-600 max-w-2xl mx-auto">
-      Valida tu cuenta como organización autorizada y agrega tus eventos al calendario cultural.
+    <p class="mt-3 text-lg text-gray-700 max-w-2xl mx-auto">
+      Aquí puedes gestionar y publicar eventos culturales en el calendario nacional de <strong>BeelFest</strong>.
     </p>
 
-    <!-- Componente React del formulario -->
-    <EventForm client:load />
-  </main>
-</Layout>
+    <!-- 💬 Mensajes dinámicos -->
+    {message && (
+      <div
+        class:list={[
+          "rounded-md px-4 py-3 border text-base font-medium shadow-sm transition-all",
+          messageType === "success" && "bg-emerald-100 border-emerald-300 text-emerald-800",
+          messageType === ("warning" as any) && "bg-yellow-100 border-yellow-300 text-yellow-800",
+          messageType === "error" && "bg-red-100 border-red-300 text-red-800",
+        ]}
+      >
+        {message}
+      </div>
+    )}
 
-<!-- Importamos el formulario React -->
-<!-- EventForm import moved to the frontmatter above -->
+    <!-- ✅ Si el usuario tiene rol organización -->
+    {canPost ? (
+      <div
+        class="bg-white shadow-lg border border-emerald-200 rounded-xl p-6 md:p-8 relative overflow-hidden"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-emerald-50 via-transparent to-white opacity-40 pointer-events-none"
+        ></div>
+
+        <h2 class="text-2xl font-bold text-emerald-700 mb-4">
+          ✏️ Crear nuevo evento
+        </h2>
+        <p class="text-gray-600 mb-6">
+          Bienvenido, <strong>{profile?.nombre ?? "organizador"}</strong>.<br />
+          Completa los campos para agregar un nuevo evento cultural al calendario.
+        </p>
+
+        <EventForm />
+      </div>
+    ) : (
+      <!-- 🚫 Si no tiene el rol correcto -->
+      <div class="bg-white shadow-lg border border-gray-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold text-red-600 mb-3">🚫 Acceso restringido</h2>
+        {user ? (
+          <>
+            <p class="text-gray-700 mb-4">
+              Hola <strong>{user.user_metadata?.full_name ?? "usuario"}</strong>, tu cuenta actual no tiene permisos para crear eventos.
+            </p>
+            <div class="bg-yellow-50 border border-yellow-300 rounded-md px-4 py-3 text-yellow-800 mb-4">
+              Solo las <strong>organizaciones verificadas</strong> pueden publicar eventos en BeelFest.
+            </div>
+            <p class="text-gray-600">
+              Si representas una institución, festival o entidad cultural, puedes solicitar el cambio de rol en tu perfil o contactar al
+              equipo de soporte para la verificación.
+            </p>
+            <a
+              href="/perfil"
+              class="inline-block mt-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-2 rounded-lg transition"
+            >
+              🧾 Ir a mi perfil
+            </a>
+          </>
+        ) : (
+          <>
+            <p class="text-gray-700 mb-4">
+              Debes iniciar sesión para acceder al panel de organizadores.
+            </p>
+            <a
+              href="/signin"
+              class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-2 rounded-lg transition"
+            >
+              <div class="flex items-center gap-2 justify-center">
+                <LogOut class="rotate-180" /> Iniciar sesión
+              </div>
+            </a>
+          </>
+        )}
+      </div>
+    )}
+  </main>
+
+  <style>
+ 
+  </style>
+</Layout>

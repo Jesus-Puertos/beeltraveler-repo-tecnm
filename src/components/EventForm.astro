@@ -1,0 +1,48 @@
+
+  <!-- 📅 Formulario -->
+  <form method="post" class="bg-white shadow-xl rounded-xl p-6 border border-gray-200 space-y-4">
+    <h2 class="text-xl font-bold text-center text-gray-800">Crear nuevo evento</h2>
+
+    <input
+      type="text"
+      name="title"
+      placeholder="Título"
+      class="w-full border rounded-md p-2"
+      required
+    />
+
+    <textarea
+      name="description"
+      placeholder="Descripción"
+      class="w-full border rounded-md p-2"
+      rows="3"
+    ></textarea>
+
+    <input
+      type="text"
+      name="place"
+      placeholder="Lugar"
+      class="w-full border rounded-md p-2"
+    />
+
+    <input type="date" name="date" class="w-full border rounded-md p-2" required />
+
+    <div class="flex gap-2">
+      <input type="time" name="start_time" class="flex-1 border rounded-md p-2" />
+      <input type="time" name="end_time" class="flex-1 border rounded-md p-2" />
+    </div>
+
+    <input
+      type="url"
+      name="image_url"
+      placeholder="URL de imagen (opcional)"
+      class="w-full border rounded-md p-2"
+    />
+
+    <button
+      type="submit"
+      class="w-full bg-emerald-500 text-white py-2 rounded-md hover:bg-emerald-600 transition"
+    >
+      Guardar evento
+    </button>
+  </form>
