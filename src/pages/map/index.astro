@@ -32,207 +32,208 @@ import Topic from "@/components/Topic.astro";
 import ScrollStack, { ScrollStackItem } from '@/components/ScrollStackItem.tsx'
 import MapaMemo from "@/components/MapaMemo.astro";
 
-
 const items = [
   {
     image: "/img/states/aguascalientes.jpg",
     link: "https://es.wikipedia.org/wiki/Aguascalientes",
     title: "Aguascalientes",
-    description: "Estado de México",
+    description: "Cuna de la Feria Nacional de San Marcos y corazón del arte taurino.",
   },
   {
     image: "/img/states/baja-california.jpg",
     link: "https://es.wikipedia.org/wiki/Baja_California",
     title: "Baja California",
-    description: "Estado de México",
+    description: "Puerta al Pacífico y al vino mexicano en el Valle de Guadalupe.",
   },
   {
     image: "/img/states/bajacalifornia-sur.jpg",
     link: "https://es.wikipedia.org/wiki/Baja_California_Sur",
     title: "Baja California Sur",
-    description: "Estado de México",
+    description: "Paraíso de playas, ballenas y el emblemático Arco de Cabo San Lucas.",
   },
   {
     image: "/img/states/campeche.jpg",
     link: "https://es.wikipedia.org/wiki/Campeche",
     title: "Campeche",
-    description: "Estado de México",
+    description: "Murallas coloniales y vestigios mayas frente al Golfo de México.",
   },
   {
     image: "/img/states/coahuila.jpg",
     link: "https://es.wikipedia.org/wiki/Coahuila",
     title: "Coahuila",
-    description: "Estado de México",
+    description: "Tierra del vino, los dinosaurios y el desierto infinito del norte.",
   },
   {
     image: "/img/states/colima.jpg",
     link: "https://es.wikipedia.org/wiki/Colima",
     title: "Colima",
-    description: "Estado de México",
+    description: "Estado pequeño pero poderoso, hogar del Volcán de Fuego.",
   },
   {
     image: "/img/states/chiapas.jpg",
     link: "https://es.wikipedia.org/wiki/Chiapas",
     title: "Chiapas",
-    description: "Estado de México",
+    description: "Riqueza natural y cultural con cascadas, selvas y tradiciones vivas.",
   },
   {
     image: "/img/states/Chihuahua.jpg",
     link: "https://es.wikipedia.org/wiki/Chihuahua",
     title: "Chihuahua",
-    description: "Estado de México",
+    description: "Territorio vasto con la majestuosa Sierra Tarahumara y las Barrancas del Cobre.",
   },
   {
     image: "/img/states/estado-de-mexico.jpg",
     link: "https://es.wikipedia.org/wiki/Ciudad_de_M%C3%A9xico",
     title: "Ciudad de México",
-    description: "Capital del país",
+    description: "Capital vibrante, mezcla de historia azteca y modernidad cosmopolita.",
   },
   {
     image: "/img/states/durango.jpg",
     link: "https://es.wikipedia.org/wiki/Durango",
     title: "Durango",
-    description: "Estado de México",
+    description: "Escenario de películas del viejo oeste y paisajes montañosos únicos.",
   },
   {
     image: "/img/states/guanajuato.jpg",
     link: "https://es.wikipedia.org/wiki/Guanajuato",
     title: "Guanajuato",
-    description: "Estado de México",
+    description: "Ciudad subterránea y colorida, joya colonial y alma del Festival Cervantino.",
   },
   {
     image: "/img/states/guerrero.jpg",
     link: "https://es.wikipedia.org/wiki/Guerrero",
     title: "Guerrero",
-    description: "Estado de México",
+    description: "Acapulco, historia insurgente y costas que bañan el Pacífico.",
   },
   {
     image: "/img/states/hidalgo.jpg",
     link: "https://es.wikipedia.org/wiki/Hidalgo",
     title: "Hidalgo",
-    description: "Estado de México",
+    description: "Cuna del paste, los prismas basálticos y la historia de la Independencia.",
   },
   {
     image: "/img/states/jalisco.jpg",
     link: "https://es.wikipedia.org/wiki/Jalisco",
     title: "Jalisco",
-    description: "Estado de México",
+    description: "Origen del mariachi, el tequila y el alma del folclor mexicano.",
   },
   {
     image: "/img/states/estado-de-mexico.jpg",
     link: "https://es.wikipedia.org/wiki/M%C3%A9xico_(estado)",
     title: "Estado de México",
-    description: "Estado de México",
+    description: "Desde Nevado de Toluca hasta pueblos mágicos llenos de tradición.",
   },
   {
     image: "/img/states/michoacan.jpg",
     link: "https://es.wikipedia.org/wiki/Michoac%C3%A1n",
     title: "Michoacán",
-    description: "Estado de México",
+    description: "Arte purépecha, mariposas monarca y el encanto de Pátzcuaro.",
   },
   {
     image: "/img/states/morelos.jpg",
     link: "https://es.wikipedia.org/wiki/Morelos",
     title: "Morelos",
-    description: "Estado de México",
+    description: "Tierra de la eterna primavera y legado de Emiliano Zapata.",
   },
   {
     image: "/img/states/nayarit.jpg",
     link: "https://es.wikipedia.org/wiki/Nayarit",
     title: "Nayarit",
-    description: "Estado de México",
+    description: "Playas vírgenes, cultura wixárika y surf en Sayulita.",
   },
   {
     image: "/img/states/nuevo-leon.jpg",
     link: "https://es.wikipedia.org/wiki/Nuevo_Le%C3%B3n",
     title: "Nuevo León",
-    description: "Estado de México",
+    description: "Potencia industrial con alma norteña y paisajes de montaña.",
   },
   {
     image: "/img/states/oaxaca.jpg",
     link: "https://es.wikipedia.org/wiki/Oaxaca",
     title: "Oaxaca",
-    description: "Estado de México",
+    description: "Cultura viva, gastronomía inigualable y arte en cada rincón.",
   },
   {
     image: "/img/states/puebla.jpg",
     link: "https://es.wikipedia.org/wiki/Puebla",
     title: "Puebla",
-    description: "Estado de México",
+    description: "Talavera, mole y una arquitectura barroca que enamora.",
   },
   {
     image: "/img/states/queretaro.jpg",
     link: "https://es.wikipedia.org/wiki/Quer%C3%A9taro",
     title: "Querétaro",
-    description: "Estado de México",
+    description: "Centro histórico Patrimonio Mundial y cuna de la Independencia.",
   },
   {
     image: "/img/states/quintana-roo.jpg",
     link: "https://es.wikipedia.org/wiki/Quintana_Roo",
     title: "Quintana Roo",
-    description: "Estado de México",
+    description: "El Caribe mexicano: playas turquesa y vestigios mayas.",
   },
   {
     image: "/img/states/san-luis-potosi.jpg",
     link: "https://es.wikipedia.org/wiki/San_Luis_Potos%C3%AD",
     title: "San Luis Potosí",
-    description: "Estado de México",
+    description: "La Huasteca Potosina y sus cascadas te roban el aliento.",
   },
   {
     image: "/img/states/sinaloa.jpg",
     link: "https://es.wikipedia.org/wiki/Sinaloa",
     title: "Sinaloa",
-    description: "Estado de México",
+    description: "Cuna de la banda, sabor del mar y espíritu festivo del noroeste.",
   },
   {
     image: "/img/states/sonora.jpg",
     link: "https://es.wikipedia.org/wiki/Sonora",
     title: "Sonora",
-    description: "Estado de México",
+    description: "Desierto majestuoso, carne asada y tradición vaquera.",
   },
   {
     image: "/img/states/tabasco.jpg",
     link: "https://es.wikipedia.org/wiki/Tabasco",
     title: "Tabasco",
-    description: "Estado de México",
+    description: "Tierra del cacao, ríos caudalosos y selva tropical.",
   },
   {
     image: "/img/states/tamaulipas.jpg",
     link: "https://es.wikipedia.org/wiki/Tamaulipas",
     title: "Tamaulipas",
-    description: "Estado de México",
+    description: "Frontera viva y playas que miran al Golfo de México.",
   },
   {
     image: "/img/states/tlaxcala.jpg",
     link: "https://es.wikipedia.org/wiki/Tlaxcala",
     title: "Tlaxcala",
-    description: "Estado de México",
+    description: "Pequeño en tamaño, gigante en historia prehispánica y colonial.",
   },
   {
     image: "/img/states/veracruz.jpg",
     link: "https://es.wikipedia.org/wiki/Veracruz",
     title: "Veracruz",
-    description: "Estado de México",
+    description: "Puerto histórico, son jarocho y el sabor alegre del Golfo.",
   },
   {
     image: "/img/states/yucatan.jpg",
     link: "https://es.wikipedia.org/wiki/Yucat%C3%A1n",
     title: "Yucatán",
-    description: "Estado de México",
+    description: "Cenotes, ruinas mayas y el misticismo del sureste mexicano.",
   },
   {
     image: "/img/states/zacatecas.jpg",
     link: "https://es.wikipedia.org/wiki/Zacatecas",
     title: "Zacatecas",
-    description: "Estado de México",
+    description: "Cerro de la Bufa, minas de plata y calles empedradas llenas de historia.",
   },
 ];
+
 ---
 
 <Layout user={user} avatar={avatar} displayName={displayName}>
   
   <Container>
-   
+
+    
     <!-- Título responsivo -->
     <Topic
       title="Ve los principales sitios cuturales de México"
@@ -242,7 +243,7 @@ const items = [
       <p class="text-sm sm:text-base md:text-lg px-2">Arrasta y deja que BeelGo te lleve a un lugar al azar</p>
     </Topic>
 
- <MapaMemo />
+ <MapaMemo  />
 
 
     <Topic
