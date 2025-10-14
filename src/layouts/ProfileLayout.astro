@@ -54,16 +54,14 @@ if (accessToken) {
     <title>BeelPedia</title>
    
   </head>
-  <body class="bg-white">
+  <body class="bg-white md:pl-60 pb-16">
       <div
-        class=" m-auto dark:bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]"
+        class="m-auto dark:bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]"
       >
-     
       <slot />
-       </div>
-      <!-- <Footer /> -->
+      </div>
   </body>
-  <script is:inline src="/node_modules/preline/dist/preline.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.4.1/dist/preline.js" defer></script>
 
   <style is:global>
     :root {

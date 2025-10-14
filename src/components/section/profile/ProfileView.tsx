@@ -81,100 +81,99 @@ export default function ProfileView({
   };
 
   return (
-    <section className="max-w-4xl mx-auto mt-8 px-4">
+    <section className="max-w-5xl mx-auto mt-8 px-4">
       {/* 📌 Portada */}
-      <div className="relative rounded-xl shadow">
-        <img
-          src="https://images.unsplash.com/photo-1503264116251-35a269479413"
-          alt="Portada"
-          className="w-full h-48 object-cover"
-        />
+      <div className="relative">
+        <div className="h-40 md:h-56 w-full rounded-3xl overflow-hidden shadow-xl">
+          <img src="https://images.unsplash.com/photo-1503264116251-35a269479413" alt="Portada" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30" />
+        </div>
 
-        <div className="absolute w-full -bottom-16 md:-bottom-12 flex flex-col items-center md:flex-row md:justify-start md:space-x-4">
-          <img
-            src={profile.avatar_url ?? "/default-avatar.webp"}
-            alt="Avatar"
-            className="h-24 w-24 rounded-full border-4 border-white shadow-md object-cover"
-          />
+        <div className="absolute -bottom-16 md:-bottom-12 left-0 right-0 px-4 md:px-8">
+          <div className="mx-auto grid grid-cols-[auto,1fr] gap-4 items-start rounded-2xl md:rounded-3xl bg-white/85 dark:bg-emerald-900/85 backdrop-blur-xl shadow-2xl p-4 md:p-6">
+            <img src={profile.avatar_url ?? "/default-avatar.webp"} alt="Avatar" className="h-20 w-20 md:h-24 md:w-24 rounded-full ring-4 ring-white/70 object-cover" />
 
-          <div className="bg-white flex flex-col w-full p-4 shadow rounded-md text-black dark:bg-emerald-900">
-            <h1 className="text-xl font-bold">
-              {profile.nombre} {profile.apellidos}
-            </h1>
-
-            {/* 📌 Botones */}
-            <div className="flex items-center flex-wrap gap-3 mt-2">
-              {currentUser?.id === profile.id ? (
-                <a
-                  href="/perfil/editar"
-                  className="px-4 py-2 rounded-lg bg-accent-a0 text-white font-medium hover:bg-accent-a10"
-                >
-                  Editar perfil
-                </a>
-              ) : (
-                <>
-                  <button
-                    onClick={toggleFollow}
-                    className="px-3 py-1 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-500 flex items-center gap-1"
+            <div className="flex flex-col gap-3 min-w-0">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <h1 className="text-lg md:text-2xl font-bold tracking-tight text-emerald-900 dark:text-white truncate">
+                  {profile.nombre} {profile.apellidos}
+                </h1>
+                {currentUser?.id === profile.id ? (
+                  <a
+                    href="/perfil/editar"
+                    className="px-3 py-1.5 rounded-full bg-emerald-600 text-white text-sm md:text-base font-medium hover:bg-emerald-500"
                   >
-                    {followingStatus ? "✓ Siguiendo" : "+ Seguir"}
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      (window.location.href = `/chat/${profile.id}`)
-                    }
-                    className="px-3 py-1 rounded-lg border text-emerald-700 dark:text-emerald-300"
-                  >
-                    Mensaje
-                  </button>
-                </>
-              )}
-            </div>
-
-            {/* 📌 Stats */}
-            <div className="flex flex-row justify-start items-center text-center gap-6 border-t mt-4 pt-2">
-              <div>
-                <p className="font-bold text-lg text-emerald-700">
-                  {following.length}
-                </p>
-                <span className="text-sm text-gray-500">Siguiendo</span>
+                    Editar
+                  </a>
+                ) : (
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      onClick={toggleFollow}
+                      className="px-3 py-1.5 rounded-full bg-emerald-600 text-white text-sm md:text-base font-medium hover:bg-emerald-500"
+                    >
+                      {followingStatus ? "✓ Siguiendo" : "+ Seguir"}
+                    </button>
+                    <button
+                      onClick={() => (window.location.href = `/chat/${profile.id}`)}
+                      className="px-3 py-1.5 rounded-full border border-emerald-300/60 text-emerald-700 dark:text-emerald-300 text-sm md:text-base"
+                    >
+                      Mensaje
+                    </button>
+                  </div>
+                )}
               </div>
-              <div>
-                <p className="font-bold text-lg text-emerald-700">
-                  {followers.length}
-                </p>
-                <span className="text-sm text-gray-500">Seguidores</span>
-              </div>
-            </div>
 
-            <p className="mt-3 text-gray-700 dark:text-gray-200">
-              {profile.bio ?? "Este usuario aún no ha escrito una biografía."}
-            </p>
+              <div className="grid grid-cols-3 gap-3 md:gap-6 text-center">
+                <div>
+                  <p className="text-base md:text-lg font-bold text-emerald-800 dark:text-emerald-200">0</p>
+                  <span className="text-xs text-gray-500">Publicaciones</span>
+                </div>
+                <div>
+                  <p className="text-base md:text-lg font-bold text-emerald-800 dark:text-emerald-200">{followers.length}</p>
+                  <span className="text-xs text-gray-500">Seguidores</span>
+                </div>
+                <div>
+                  <p className="text-base md:text-lg font-bold text-emerald-800 dark:text-emerald-200">{following.length}</p>
+                  <span className="text-xs text-gray-500">Siguiendo</span>
+                </div>
+              </div>
+
+              <p className="text-sm md:text-base text-gray-700 dark:text-gray-200">
+                {profile.bio ?? "Este usuario aún no ha escrito una biografía."}
+              </p>
+            </div>
           </div>
         </div>
+        {/* Spacer para que el contenido no se superponga con la tarjeta flotante */}
+        <div className="h-24 md:h-16" />
       </div>
 
       {/* 📌 Seguidores */}
-      <div className="mt-16 bg-white dark:bg-emerald-900 border rounded-xl shadow p-6">
-        <h2 className="font-bold text-lg mb-4">Seguidores</h2>
-        <ul className="space-y-2">
-          {followers.map((f) => (
-            <li key={f.id} className="flex items-center gap-3">
-              <img
-                src={f.profiles.avatar_url ?? "/default-avatar.webp"}
-                className="h-8 w-8 rounded-full"
-              />
-              <span>
-                {f.profiles.nombre} {f.profiles.apellidos}
-              </span>
-            </li>
-          ))}
-        </ul>
+      <div className="mt-4 md:mt-2">
+        <div className="mx-auto bg-white/70 dark:bg-emerald-900/60 backdrop-blur-md rounded-2xl shadow-xl p-2 md:p-3 max-w-3xl">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <button className="py-2 rounded-xl bg-emerald-600 text-white font-medium">Seguidores</button>
+            <button className="py-2 rounded-xl text-emerald-700 dark:text-emerald-200 hover:bg-emerald-50/60 dark:hover:bg-white/5">Siguiendo</button>
+          </div>
+        </div>
       </div>
+      <h2 className="font-bold text-lg mb-4">Seguidores</h2>
+      <ul className="space-y-2">
+        {followers.map((f) => (
+          <li key={f.id} className="flex items-center gap-3">
+            <img
+              src={f.profiles.avatar_url ?? "/default-avatar.webp"}
+              className="h-8 w-8 rounded-full"
+            />
+            <span>
+              {f.profiles.nombre} {f.profiles.apellidos}
+            </span>
+          </li>
+        ))}
+      </ul>
 
       {/* 📌 Siguiendo */}
-      <div className="mt-8 bg-white dark:bg-emerald-900 border rounded-xl shadow p-6">
+      <div className="mt-8 bg-white/80 dark:bg-emerald-900/70 backdrop-blur-md border rounded-2xl shadow p-4 md:p-6">
         <h2 className="font-bold text-lg mb-4">Siguiendo</h2>
         <ul className="space-y-2">
           {following.map((f) => (

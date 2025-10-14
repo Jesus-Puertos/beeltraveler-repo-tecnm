@@ -1,5 +1,5 @@
 ---
-import ProfileLayout from "@/layouts/ProfileLayout.astro";
+import ProfileLayout  from    "@/layouts/Layout.astro"
 import Sidebar from "@/components/ui/menus/Sidebar.astro";
 import ProfileView from "@/components/section/profile/ProfileView"; // 👈 importas el React
 import { supabase } from "@/lib/supabase";
@@ -55,7 +55,6 @@ if (profile) {
 ---
 
 <ProfileLayout user={currentUser} displayName={profile?.nombre} avatar={profile?.avatar_url}>
-  <Sidebar user={currentUser} profile={profile} />
   {profile && (
     <ProfileView client:load profile={profile} currentUser={currentUser} initialFollowers={followers} initialFollowing={following} isFollowing={isFollowing} />
   )}

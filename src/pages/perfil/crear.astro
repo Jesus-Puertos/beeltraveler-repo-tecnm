@@ -1,0 +1,44 @@
+---
+import ProfileLayout from "@/layouts/ProfileLayout.astro";
+import Sidebar from "@/components/ui/menus/Sidebar.astro";
+import { createClient } from "@supabase/supabase-js";
+
+const { cookies, redirect } = Astro;
+
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+if (!accessToken || !refreshToken) {
+  return redirect("/signin");
+}
+
+const supabaseServer = createClient(
+  import.meta.env.SUPABASE_URL,
+  import.meta.env.SUPABASE_ANON_KEY,
+  {
+    global: {
+      headers: { Authorization: `Bearer ${accessToken.value}` },
+    },
+  }
+);
+
+const { data: { user } } = await supabaseServer.auth.getUser();
+if (!user) {
+  return redirect("/signin");
+}
+
+const { data: profile } = await supabaseServer
+  .from("profiles")
+  .select("id, nombre, apellidos, avatar_url")
+  .eq("id", user.id)
+  .maybeSingle();
+---
+<ProfileLayout user={user} displayName={profile?.nombre} avatar={profile?.avatar_url}>
+  <Sidebar user={user} profile={profile} />
+  <main class="max-w-3xl mx-auto mt-10 p-6 bg-white dark:bg-emerald-900 rounded-xl shadow space-y-4">
+    <h1 class="text-2xl font-bold">Crear</h1>
+    <p class="text-gray-600 dark:text-gray-200">Pronto podrás crear contenido desde aquí.</p>
+  </main>
+</ProfileLayout>
+
+

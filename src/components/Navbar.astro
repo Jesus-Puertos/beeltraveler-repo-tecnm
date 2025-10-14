@@ -22,15 +22,8 @@ const { user, displayName, avatar } = Astro.props;
 ---
 
 <Container>
-  <header
-    class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start mt-2 mb-4"
-  >
-    <nav
-      class="relative mx-2 w-full md:w-fit rounded-[36px] border  px-4 py-3 backdrop-blur-md \
-           border-emerald-800/40 bg-black dark:backdrop-blur-md \
-           md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 xl:mx-auto"
-      aria-label="Global"
-    >
+  <header class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start mt-2 mb-4">
+    <nav class="relative mx-2 w-full md:w-fit rounded-[36px] px-4 py-3 backdrop-blur-md bg-white/70 dark:bg-emerald-900/60 border border-emerald-700/30 shadow-lg md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 xl:mx-auto" aria-label="Global">
       <!-- Logo + toggle móvil -->
       <div class="flex items-center justify-between">
         <a href="/" class="flex-none">
@@ -45,6 +38,7 @@ const { user, displayName, avatar } = Astro.props;
 
         <div class="ml-auto mr-5 md:hidden">
           <button
+            id="mobile-toggle"
             type="button"
             class="hs-collapse-toggle flex h-8 w-8 items-center justify-center rounded-full \
                  text-sm font-bold text-emerald-700 transition duration-300 hover:bg-emerald-100 \
@@ -150,4 +144,5 @@ const { user, displayName, avatar } = Astro.props;
       sessionStorage.clear();
     });
   }
+  // Preline se encarga del toggle, no necesitamos JS adicional
 </script>
