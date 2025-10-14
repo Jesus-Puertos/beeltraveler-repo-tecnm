@@ -34,59 +34,60 @@ const cardData: BentoCardProps[] = [
     color: "#0a1511",
     title: "Misión",
     description:
-      "Salvaguardar y difundir el patrimonio cultural mediante una plataforma digital abierta, confiable y accesible que promueva la participación de distintos sectores académicos y sociales.",
+      "Unir la preservación cultural, el turismo y el talento local en una sola plataforma digital que impulse el desarrollo económico, social y cultural de México.",
     label: "Propósito",
   },
   {
     color: "#0a1511",
     title: "Visión",
     description:
-      "Convertirnos en la principal enciclopedia digital colaborativa de México, reconocida por la calidad, veracidad e innovación en el registro del patrimonio cultural, con proyección internacional.",
+      "Ser el ecosistema digital más influyente de México, donde la cultura, los viajes y la creatividad convergen para conectar al mundo con la esencia auténtica de nuestro país.",
     label: "Futuro",
   },
   {
     color: "#0a1511",
     title: "Valores",
     description:
-      "Autenticidad, colaboración, innovación, sostenibilidad, accesibilidad y diversidad: principios que guían cada aporte y garantizan la fidelidad y riqueza de nuestro legado cultural.",
+      "Autenticidad, innovación, equidad, colaboración y sostenibilidad. Cada acción en BeelGo busca fortalecer el vínculo entre tradición y modernidad.",
     label: "Principios",
   },
   {
     color: "#0a1511",
     title: "Historia",
     description:
-      "BeelPedia surge como una iniciativa estudiantil apasionada por rescatar y preservar la herencia cultural de México, transformándola en un legado digital accesible para todos.",
+      "BeelGo nació de la fusión de proyectos visionarios: BeelTraveler, BeelArtisan, BeelPedia y BeelFest. Juntos, dan vida a un ecosistema que preserva, conecta y celebra lo que somos.",
     label: "Origen",
   },
   {
     color: "#0a1511",
     title: "Objetivos Estratégicos",
     description:
-      "Corto: crear una base sólida de información confiable. Medio: integrar IA y mapas interactivos. Largo: consolidarnos como referente internacional en preservación cultural.",
+      "Corto: fortalecer la red de prestadores y artesanos. Medio: integrar inteligencia artificial y sistemas de recomendación cultural. Largo: expandir el modelo BeelGo a toda Latinoamérica.",
     label: "Metas",
   },
   {
     color: "#0a1511",
     title: "Impacto Esperado",
     description:
-      "BeelPedia busca beneficiar a estudiantes, investigadores y ciudadanos, impulsando el acceso al conocimiento y fomentando la preservación de la memoria cultural.",
+      "BeelGo generará oportunidades para artesanos, guías, agencias y viajeros, impulsando la economía local y garantizando la preservación de la herencia cultural mexicana.",
     label: "Alcance",
   },
   {
     color: "#0a1511",
     title: "Cifras Clave",
     description:
-      "+100 tradiciones registradas, 20 estados activos, meta de 10,000 usuarios en el primer año.",
+      "Meta inicial: 32 estados conectados, 5,000 artesanos afiliados, 10,000 usuarios activos y 100 eventos culturales registrados en el primer año.",
     label: "Resultados",
   },
   {
     color: "#0a1511",
     title: "Lema",
     description:
-      "“La memoria cultural no se pierde, se transforma en legado digital.”",
+      "“Descubre, conecta y preserva México desde una sola plataforma.”",
     label: "Inspiración",
   },
 ];
+
 
 
 const createParticleElement = (

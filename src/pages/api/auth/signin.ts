@@ -15,6 +15,7 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
       provider: provider as Provider,
       options: {
         redirectTo: "http://localhost:4321/api/auth/callback",
+        
         queryParams: {
           prompt: "select_account", // 👈 Fuerza a Google a mostrar el selector de cuenta
         },
