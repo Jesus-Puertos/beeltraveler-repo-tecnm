@@ -67,14 +67,16 @@ if (accessToken) {
     />
     <ViewTransitions />
   </head>
-  <body
-    class="bg-gradient-to-br from-green-50 via-white to-emerald-50 font-SpaceGrotesk"
-  >
-    <Navbar user={user} displayName={displayName} avatar={avatar} />
-    <slot />
-    <BackToTop  />
-    <Footer />
+  <body class="min-h-screen font-SpaceGrotesk bg-[radial-gradient(900px_600px_at_50%_-200px,rgba(16,185,129,0.15),transparent)] bg-fixed">
+    <div class="mx-auto max-w-[1400px] px-2 md:px-4">
+      <Navbar user={user} displayName={displayName} avatar={avatar} />
+      <main class="mt-2 md:mt-4">
+        <slot />
+      </main>
+      <BackToTop />
+      <Footer />
+    </div>
     <script type="text/javascript" src="./dist/main.js" is:inline></script>
   </body>
-  <script is:inline src="/node_modules/preline/dist/preline.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/preline@2.4.1/dist/preline.js" defer></script>
 </html>

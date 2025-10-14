@@ -1,32 +1,64 @@
 ---
 import HomeIcon from "@/icons/HomeIcon.astro";
+import PlusIcon from "@/icons/Plus.astro";
+import MailIcon from "@/icons/email.astro";
+import UserIcon from "@/components/Icons/User.astro";
 
 const { user, profile } = Astro.props;
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 ---
-
-<nav class="fixed top-0 left-0 w-60 h-full border-r bg-lime flex flex-col">
+<!-- Sidebar (desktop) -->
+<nav class="hidden md:flex fixed top-0 left-0 w-60 h-full border-r border-emerald-200/30 bg-gradient-to-b from-emerald-700 to-emerald-800/90 text-white flex-col z-40">
   <!-- Logo -->
   <div class="h-20 flex items-center justify-center">
     <a href="/" class="flex-none">
-      <img src="/Beeltravel-logo.webp" alt="Logo"  class="mx-auto size-32" />
+      <img src="/Beeltravel-logo.webp" alt="Logo"  class="mx-auto size-28 drop-shadow" />
     </a>
   </div>
 
   <!-- Navegación -->
-  <ul class="flex-1 px-4 mt-6 space-y-2 text-sm font-medium">
+  <ul class="flex-1 px-3 mt-4 space-y-1 text-sm font-medium">
     <li>
-      <a
-        href="/"
-        class="flex items-center justify-center gap-3 py-2 px-3 rounded-lg text-white hover:bg-success-a0 transition"
-      >
-        <HomeIcon class="w-5 h-5 text-white" />
-        <span class="uppercase text-xl">Inicio</span>
+      <a href="/" class={`flex items-center gap-3 py-2 px-3 rounded-xl transition ${isActive("/") ? "bg-white/15 ring-1 ring-white/20" : "hover:bg-white/10"}`}>
+        <HomeIcon class="w-5 h-5" />
+        <span>Inicio</span>
+      </a>
+    </li>
+    <li>
+      <a href="/perfil/crear" class={`flex items-center gap-3 py-2 px-3 rounded-xl transition ${isActive("/perfil/crear") ? "bg-white/15 ring-1 ring-white/20" : "hover:bg-white/10"}`}>
+        <PlusIcon class="w-5 h-5" />
+        <span>Crear</span>
+      </a>
+    </li>
+    <li>
+      <a href="/mensajes" class={`flex items-center gap-3 py-2 px-3 rounded-xl transition ${isActive("/mensajes") ? "bg-white/15 ring-1 ring-white/20" : "hover:bg-white/10"}`}>
+        <MailIcon class="w-5 h-5" />
+        <span>Mensajes</span>
+      </a>
+    </li>
+    <li>
+      <a href="/amigos" class={`flex items-center gap-3 py-2 px-3 rounded-xl transition ${isActive("/amigos") ? "bg-white/15 ring-1 ring-white/20" : "hover:bg-white/10"}`}>
+        <UserIcon class="w-5 h-5" />
+        <span>Amigos</span>
+      </a>
+    </li>
+    <li>
+      <a href="/perfil" class={`flex items-center gap-3 py-2 px-3 rounded-xl transition ${isActive("/perfil") && !isActive("/perfil/crear") && !isActive("/perfil/editar") ? "bg-white/15 ring-1 ring-white/20" : "hover:bg-white/10"}`}>
+        <UserIcon class="w-5 h-5" />
+        <span>Mi Perfil</span>
+      </a>
+    </li>
+    <li>
+      <a href="/perfil/editar" class={`flex items-center gap-3 py-2 px-3 rounded-xl transition ${isActive("/perfil/editar") ? "bg-white/15 ring-1 ring-white/20" : "hover:bg-white/10"}`}>
+        <UserIcon class="w-5 h-5" />
+        <span>Editar</span>
       </a>
     </li>
   </ul>
 
   <!-- Perfil -->
-  <div class="relative px-4 py-4 border-t">
+  <div class="relative px-4 py-4 border-t border-white/10">
     <details class="group relative">
       <summary class="flex items-center gap-3 cursor-pointer list-none">
         <img
@@ -68,4 +100,40 @@ const { user, profile } = Astro.props;
       </div>
     </details>
   </div>
+  </nav>
+
+<!-- Bottom dock (mobile, estilo iOS) -->
+<nav class="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-40">
+  <ul class="flex items-center gap-3 px-3 py-2 rounded-full bg-black/60 backdrop-blur-lg border border-white/10 shadow-2xl">
+    <li>
+      <a href="/" class={`flex items-center justify-center w-12 h-12 rounded-full text-white transition transform active:scale-95 ${isActive("/") ? "bg-white/20" : "hover:scale-110"}`}>
+        <HomeIcon class="w-6 h-6" />
+        <span class="sr-only">Inicio</span>
+      </a>
+    </li>
+    <li class="-mb-3">
+      <a href="/perfil/crear" class={`flex items-center justify-center w-14 h-14 rounded-2xl text-white transition transform active:scale-95 shadow-xl ring-1 ring-white/20 bg-gradient-to-br from-emerald-400 to-emerald-600 ${isActive("/perfil/crear") ? "scale-105" : "hover:scale-110"}`}>
+        <PlusIcon class="w-7 h-7" />
+        <span class="sr-only">Crear</span>
+      </a>
+    </li>
+    <li>
+      <a href="/mensajes" class={`flex items-center justify-center w-12 h-12 rounded-full text-white transition transform active:scale-95 ${isActive("/mensajes") ? "bg-white/20" : "hover:scale-110"}`}>
+        <MailIcon class="w-6 h-6" />
+        <span class="sr-only">Mensajes</span>
+      </a>
+    </li>
+    <li>
+      <a href="/amigos" class={`flex items-center justify-center w-12 h-12 rounded-full text-white transition transform active:scale-95 ${isActive("/amigos") ? "bg-white/20" : "hover:scale-110"}`}>
+        <UserIcon class="w-6 h-6" />
+        <span class="sr-only">Amigos</span>
+      </a>
+    </li>
+    <li>
+      <a href="/perfil" class={`flex items-center justify-center w-12 h-12 rounded-full text-white transition transform active:scale-95 ${(isActive("/perfil") && !isActive("/perfil/crear") && !isActive("/perfil/editar")) ? "bg-white/20" : "hover:scale-110"}`}>
+        <UserIcon class="w-6 h-6" />
+        <span class="sr-only">Perfil</span>
+      </a>
+    </li>
+  </ul>
 </nav>

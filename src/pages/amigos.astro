@@ -1,0 +1,57 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { createClient } from "@supabase/supabase-js";
+import MailIcon from "@/icons/email.astro";
+import UserIcon from "@/components/Icons/User.astro";
+
+const { cookies } = Astro;
+const accessToken = cookies.get("sb-access-token");
+
+const supabase = createClient(
+  import.meta.env.SUPABASE_URL,
+  import.meta.env.SUPABASE_ANON_KEY,
+  accessToken
+    ? { global: { headers: { Authorization: `Bearer ${accessToken.value}` } } }
+    : {}
+);
+
+const { data: { user } } = await supabase.auth.getUser();
+
+let builder = supabase
+  .from("profiles")
+  .select("id, nombre, apellidos, avatar_url")
+  .limit(50);
+
+if (user?.id) {
+  builder = builder.neq("id", user.id);
+}
+
+const { data: users } = await builder;
+---
+<Layout>
+  <main class="max-w-5xl mx-auto mt-10 p-4 md:p-6">
+    <h1 class="text-2xl font-bold mb-4">Amigos</h1>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {users?.map((u) => (
+        <article class="rounded-2xl bg-white/80 dark:bg-emerald-900/70 backdrop-blur-md shadow p-4 flex items-center gap-3">
+          <img src={u.avatar_url ?? "/default-avatar.webp"} alt="avatar" class="h-12 w-12 rounded-full object-cover ring-2 ring-emerald-300/50" />
+          <div class="flex-1 min-w-0">
+            <h3 class="font-semibold truncate">{u.nombre} {u.apellidos}</h3>
+            <p class="text-xs text-gray-500 truncate">@{u.id.slice(0,8)}</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <a href={`/chat/${u.id}`} class="p-2 rounded-full border border-emerald-300/60 text-emerald-700 dark:text-emerald-200 hover:bg-emerald-50/40">
+              <MailIcon class="w-4 h-4" />
+            </a>
+            <button class="p-2 rounded-full bg-emerald-600 text-white hover:bg-emerald-500">
+              <UserIcon class="w-4 h-4" />
+            </button>
+          </div>
+        </article>
+      ))}
+    </section>
+  </main>
+</Layout>
+
+
